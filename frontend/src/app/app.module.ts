@@ -9,13 +9,26 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import { HeaderComponent } from './header/header.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { MenuComponent } from './header/menu/menu.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
+import { FormsModule }   from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserComponent,
+    LoginComponent,
+    SignupComponent,
+    MenuComponent,
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
   BrowserAnimationsModule,
@@ -25,7 +38,8 @@ MatButtonModule, MatCheckboxModule,
 MatDatepickerModule,
 MatFormFieldModule,
 MatChipsModule,
-MatIconModule
+MatIconModule,
+FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

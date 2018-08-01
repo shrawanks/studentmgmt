@@ -1,0 +1,8 @@
+@import "~bootstrap/scss/functions";
+@import "~src/sass/variables";
+@import "~bootstrap/scss/mixins";
+
+
+body {
+	background-color: $primary;
+}
