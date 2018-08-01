@@ -8,7 +8,11 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -23,10 +27,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/sass/styles.scss"
             ],
             "scripts": []
           },
+            
           "configurations": {
             "production": {
               "fileReplacements": [
@@ -38,18 +43,23 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
+              
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+            
+              "extractCss": true,
+            
             }
-          }
+          },
+         
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "open": true,
             "browserTarget": "frontend:build"
           },
           "configurations": {
@@ -123,5 +133,10 @@
       }
     }
   },
-  "defaultProject": "frontend"
+  "defaultProject": "frontend",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
