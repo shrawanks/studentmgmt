@@ -16,6 +16,8 @@ import { MenuComponent } from './header/menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule }   from '@angular/forms';
+import {appRoutes} from './app-routing/app-routing.module';
+import { RouterModule } from '@angular/router'
 
 
 
@@ -39,7 +41,8 @@ MatDatepickerModule,
 MatFormFieldModule,
 MatChipsModule,
 MatIconModule,
-FormsModule
+FormsModule,
+RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
