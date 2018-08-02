@@ -16,6 +16,8 @@ import { MenuComponent } from './header/menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule }   from '@angular/forms';
+import { appRoutes } from './app-routing/app-routing.module'
+import { RouterModule } from '@angular/router'
 
 
 
@@ -31,15 +33,16 @@ import { FormsModule }   from '@angular/forms';
     FooterComponent
   ],
   imports: [
-  BrowserAnimationsModule,
+    BrowserAnimationsModule,
     BrowserModule,
     NgbModule.forRoot(),
-MatButtonModule, MatCheckboxModule,
-MatDatepickerModule,
-MatFormFieldModule,
-MatChipsModule,
-MatIconModule,
-FormsModule
+    RouterModule.forRoot(appRoutes),
+    MatButtonModule, MatCheckboxModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatIconModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
