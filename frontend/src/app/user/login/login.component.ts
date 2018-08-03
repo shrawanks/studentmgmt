@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { moveIn } from '../../router.animations';
+import { moveIn } from '../../router.animations'
+import { UserService } from '../user.service'
+import { User } from '../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +13,23 @@ import { moveIn } from '../../router.animations';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+	user : any = <User>{} || []
+
+  constructor(private userSerive : UserService, private router : Router) { }
 
   ngOnInit() {
+  }
+
+  login(formdata){
+  	let login = {
+
+  	}
+  	this.userSerive.login(this.user).subscribe(data=>{
+  		console.log(data)
+  	},error=>{
+  			console.log(error)
+  	})
+  	}
   }
 
 }
