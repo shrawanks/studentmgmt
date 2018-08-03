@@ -17,7 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule }   from '@angular/forms';
 import {appRoutes} from './app-routing/app-routing.module';
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
+import { HttpClientModule }    from '@angular/common/http';
 
 
 
@@ -42,7 +43,7 @@ MatFormFieldModule,
 MatChipsModule,
 MatIconModule,
 FormsModule,
-RouterModule.forRoot(appRoutes)
+RouterModule.forRoot(appRoutes),HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,7 +11,7 @@ import { UserService } from '../user.service'
 export class SignupComponent implements OnInit {
 // model='';
 // user=new User();
-user: any = <User>{}||[]
+user = new User();
   constructor(private userSerive:UserService) { }
 
   ngOnInit() {
@@ -19,12 +19,13 @@ user: any = <User>{}||[]
   model;
 
   signup() {
+    // console.log(this.user, "dddd")
    this.userSerive.signup(this.user)
-   .subscribe(success=>{}, error=>{})
+  //  .subscribe(success=>{}, error=>{})
     
-  }
+  // }
 
 }
 
 // export class NgbdDatepickerPopup {
-// }
+}

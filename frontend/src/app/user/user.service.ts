@@ -8,6 +8,7 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
   signup(user){
-  	return this.http.post("url",user)
+  	console.log(user);
+  	// return this.http.post("url",user)
   }
 }
