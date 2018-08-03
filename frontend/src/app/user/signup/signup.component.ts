@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
-import { UserService } from '../user.service'
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { UserService } from '../user.service'
 export class SignupComponent implements OnInit {
 // model='';
 // user=new User();
-user: any = <User>{}||[]
+user: any = <User>{}||[];
   constructor(private userSerive:UserService) { }
 
   ngOnInit() {

@@ -15,11 +15,11 @@ import { SignupComponent } from './user/signup/signup.component';
 import { MenuComponent } from './header/menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import {appRoutes} from './app-routing/app-routing.module';
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
 
-
+import { HttpClientModule }    from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,6 +42,7 @@ MatFormFieldModule,
 MatChipsModule,
 MatIconModule,
 FormsModule,
+HttpClientModule,
 RouterModule.forRoot(appRoutes)
   ],
   providers: [],
