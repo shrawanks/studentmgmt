@@ -32,15 +32,13 @@ export class SignupComponent implements OnInit {
      this.user.role = 2;
      console.log(this.user, "user")
      this.userSerive.signup(this.user)
-     .subscribe(success=>{
-        console.log(success);
-        if(success['errors'])
-          console.log(success['message'])
+     .subscribe(data=>{
+        console.log(data);
+        if(data['errors'])
+          console.log(data['message'])
         this.successMsg = "Great! You have joined successfully"
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
         this.user = {}
-        formData.form.markAsUntouched()
-        console.log(formData)
      }, error=>{
        console.log(error)
      })

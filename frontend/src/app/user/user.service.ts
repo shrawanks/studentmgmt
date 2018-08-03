@@ -15,4 +15,8 @@ export class UserService {
   	return this.http.post("http://192.168.1.180:3000/user",user)
 
   }
+
+  login(user){
+  	return this.http.post("http://192.168.1.180:3000/user/login",user)
+  }
 }
