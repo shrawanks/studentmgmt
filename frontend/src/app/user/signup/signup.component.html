@@ -1,47 +1,45 @@
-
+<div class="text-success text-center" *ngIf="successMsg" [@fallIn]='state'>
+  {{successMsg}}
+</div>
       <span class="error text-center" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
-      <form #formData='ngForm' (ngSubmit)="signup(formData.valid)" autocomplete="off" novalidate="">
+      <form #formData='ngForm' (ngSubmit)="signup(formData)" autocomplete="off" novalidate="">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="f_name">Firstname</label>
             <input type="text" class="form-control" id="f_name" placeholder="Firstname..." name="f_name" [(ngModel)]="user.f_name"  #f_name = "ngModel" required>
             <!-- {{f_name?.errors?.required|json}} -->
-            <div *ngIf="f_name?.errors?.required && submitted">
+            <div *ngIf="f_name.invalid && (f_name.dirty || f_name.touched)" class="text-danger">
               This field is required
             </div>
           </div>
           <div class="form-group col-md-6">
             <label for="l_name">Lastname</label>
-            <input type="text" class="form-control" id="l_name" placeholder="Firstname..." [(ngModel)]="user.l_name" name="l_name">
+            <input type="text" class="form-control" id="l_name" placeholder="Firstname..." [(ngModel)]="user.l_name" name="l_name" #l_name = "ngModel" required>
           </div>
-          
+
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="password" class="form-control" id="email" placeholder="Email" [(ngModel)]="user.email" name="email">
+            <input type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="user.email" name="email" #email = "ngModel" required
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
         </div>
         <div class="form-group">
             <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password" [(ngModel)]="user.password" name="password">
-        </div>
-
-        <div class="form-group">
-            <label for="inputPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="inputConPassword" placeholder="Password" [(ngModel)]="user.con_password" name="con_password">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" [(ngModel)]="user.password" name="password" #password = "ngModel" required minlength=5>
         </div>
 
         <div class="form-group">
           <label for="email">DOB</label>
         <div class="input-group">
           <input class="form-control" placeholder="yyyy-mm-dd" (click)="d.toggle()" autocomplete="false" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-          
+
         </div>
       </div>
         <div class="form-group">
           <label for="inputAddress">Address</label>
           <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
         </div>
-        <button type="submit"  [ngClass]="formData.valid ? 'checked' : 'unchecked'" class="btn btn-primary">Create my account</button>
+        <button type="submit"  [ngClass]="formData.valid ? 'checked' : 'unchecked'" class="btn btn-primary" [disabled]="formData.invalid" >Create my account</button>
       </form>
 
 <br>
