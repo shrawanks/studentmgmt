@@ -12,18 +12,28 @@ import { moveIn, fallIn } from '../../router.animations';
   animations: [moveIn(), fallIn()],
 })
 export class SignupComponent implements OnInit {
+<<<<<<< HEAD
   // model='';
   // user=new User();
   error : string
   successMsg : string
   user: any = <User>{}||[]
   submitted: boolean = false;
+=======
+// model='';
+// user=new User();
+ 
+user: any = <User>{}||[]
+submitted: boolean = false;
+>>>>>>> 67c8f85bd0f868bc23d6b4708c5549b0c583d186
   constructor(private userSerive : UserService, private router : Router) { }
+ 
 
   ngOnInit() {
   }
   model;
 
+ 
   signup(formData) {
    this.submitted = true;
    if(formData.valid){
@@ -44,8 +54,8 @@ export class SignupComponent implements OnInit {
      })
    }
   }
+ 
 
 }
 
-// export class NgbdDatepickerPopup {
-// }
+ 
