@@ -15,13 +15,13 @@ import { SignupComponent } from './user/signup/signup.component';
 import { MenuComponent } from './header/menu/menu.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
-import { UserService } from  './user/user.service';
-import { FormsModule }   from '@angular/forms';
+import { UserService } from './user/user.service';
+import { FormsModule } from '@angular/forms';
 import { appRoutes } from './app-routing/app-routing.module'
 import { RouterModule } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './user/profile/profile.component'
 
 
 
@@ -43,7 +43,7 @@ import { ProfileComponent } from './profile/profile.component'
     BrowserAnimationsModule,
     BrowserModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
+    appRoutes,
     MatButtonModule, MatCheckboxModule,
     MatDatepickerModule,
     MatFormFieldModule,

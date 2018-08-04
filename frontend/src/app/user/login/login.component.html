@@ -1,17 +1,32 @@
-
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <form #formData='ngForm' (ngSubmit)="login(formData)">
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" [(ngModel)]="user.email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <form #formData='ngForm' (ngSubmit)="!submitted && login(formData)">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" [(ngModel)]="user.email" name="email" class="form-control" #email="ngModel" placeholder="Enter email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+        <div *ngIf="email.invalid && (email.touched)" class="text-danger" [@fallIn]='state'>
+          <small *ngIf="email.errors.required">
+            Email is required.
+          </small>
+          <small *ngIf="email.errors.pattern">
+            Must be of type email
+          </small>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input name="password" type="password" [(ngModel)]="user.password" class="form-control" id="password" placeholder="Password">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input name="password" type="password" [(ngModel)]="user.password" class="form-control" id="password" #password="ngModel" placeholder="Password" required minlength="5">
+        <div *ngIf="password.invalid && (password.touched)" class="text-danger" [@fallIn]='state'>
+          <small *ngIf="password.errors.required">
+            Password is required.
+          </small>
+          <small *ngIf="password.errors.minlength">
+            Password must be at least 5 characters long.
+          </small>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Login</button>
+    </form>
   </div>
+</div>

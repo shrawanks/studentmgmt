@@ -2,19 +2,23 @@
   {{successMsg}}
 </div>
       <span class="error text-center" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
-      <form #formData='ngForm' (ngSubmit)="signup(formData)" autocomplete="off" novalidate="">
+      <form #formData='ngForm' (ngSubmit)="!submitted && signup(formData)" autocomplete="off" novalidate="">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="f_name">Firstname</label>
-            <input type="text" class="form-control" id="f_name" placeholder="Firstname..." name="f_name" [(ngModel)]="user.f_name"  #f_name = "ngModel" required>
-            <!-- {{f_name?.errors?.required|json}} -->
-            <div *ngIf="f_name.invalid && (f_name.dirty || f_name.touched)" class="text-danger">
-              This field is required
+            <input type="text" class="form-control" id="f_name" placeholder="Firstname..." name="f_name" [(ngModel)]="user.f_name"  #f_name = "ngModel" required minlength="4">
+            <div *ngIf="f_name.invalid && (f_name.touched)" class="text-danger" [@fallIn]='state'>
+              <small *ngIf="f_name.errors.required">
+                Name is required.
+              </small>
+              <small *ngIf="f_name.errors.minlength">
+                Name must be at least 4 characters long.
+              </small>
             </div>
           </div>
           <div class="form-group col-md-6">
             <label for="l_name">Lastname</label>
-            <input type="text" class="form-control" id="l_name" placeholder="Firstname..." [(ngModel)]="user.l_name" name="l_name" #l_name = "ngModel" required>
+            <input type="text" class="form-control" id="l_name" placeholder="Lastname..." [(ngModel)]="user.l_name" name="l_name" #l_name = "ngModel">
           </div>
 
         </div>
@@ -22,21 +26,42 @@
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="user.email" name="email" #email = "ngModel" required
             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+            <div *ngIf="email.invalid && (email.touched)" class="text-danger" [@fallIn]='state'>
+              <small *ngIf="email.errors.required">
+                Email is required.
+              </small>
+              <small *ngIf="email.errors.pattern">
+                Must be of type email
+              </small>
+            </div>
         </div>
         <div class="form-group">
             <label for="inputPassword">Password</label>
             <input type="password" class="form-control" id="inputPassword" placeholder="Password" [(ngModel)]="user.password" name="password" #password = "ngModel" required minlength=5>
+            <div *ngIf="password.invalid && (password.touched)" class="text-danger" [@fallIn]='state'>
+              <small *ngIf="password.errors.required">
+                Password is required.
+              </small>
+              <small *ngIf="password.errors.minlength">
+                Password must be at least 5 characters long.
+              </small>
+            </div>
         </div>
 
         <div class="form-group">
             <label for="inputConPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="inputConPassword" placeholder="Confirm Password" [(ngModel)]="user.conpassword" name="conpassword" #conpassword = "ngModel" required minlength=5>
+            <input type="password" class="form-control" id="inputConPassword" placeholder="Confirm Password" [(ngModel)]="user.conpassword" name="conpassword" #conpassword = "ngModel" (keyup)="confirmPassword(conpassword)">
+            <div *ngIf="!conPassValid && (password.touched)" class="text-danger" [@fallIn]='state'>
+              <small>
+                Password does not match.
+              </small>
+            </div>
         </div>
 
         <div class="form-group">
           <label for="email">DOB</label>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" (click)="d.toggle()" autocomplete="false" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+          <input class="form-control" placeholder="yyyy-mm-dd" (focus)="d.toggle()" name="dp" [(ngModel)]="user.dob" ngbDatepicker #d="ngbDatepicker" [minDate]="{year: 1960, month: 1, day: 1}">
 
         </div>
       </div>
