@@ -4,8 +4,6 @@ import { UserService } from '../user.service'
 import { Router } from '@angular/router'
 import { moveIn, fallIn } from '../../router.animations'
 
-
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,7 +17,7 @@ export class SignupComponent implements OnInit {
   submitted = false
   // tslint:disable-next-line:member-ordering
   model: any
-  conPassValid = true
+  conPassValid = false
  
 
   constructor(private userSerive: UserService, private router: Router) { 
@@ -39,10 +37,9 @@ export class SignupComponent implements OnInit {
   }
 
   signup(formData) {
-    this.submitted = true
     if (formData.valid && this.conPassValid) {
+      this.submitted = true
       this.user.role = 2
-      console.log(this.user, 'user')
       this.userSerive.signup(this.user)
         .subscribe(data => {
           if (data['token']) {
