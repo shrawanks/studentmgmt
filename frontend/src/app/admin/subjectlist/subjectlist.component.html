@@ -1,0 +1,57 @@
+<p>
+  subjectlist works!
+</p>
+
+<button class="btn btn-primary" (click)="showSubjectForm();">Add Subject</button>
+
+<form *ngIf="showSubject" (ngSubmit)="editMode ? updateSubject() : submitSubject()"  >
+	<div class="form-group">
+		<label>Subject Name</label>
+		<input type="text" name="subjectname" [(ngModel)]="subject.subjectName" class="form-control">
+	</div>
+	<div class="form-group">
+		<label>Class</label>
+		<input type="text" name="class"  [(ngModel)]="subject.class" class="form-control">
+	</div>
+	<div class="form-group">
+		<label>Full Marks</label>
+		<input type="text" name="fullmarks"  [(ngModel)]="subject.FullMark" class="form-control">
+	</div>
+	<div class="form-group">
+		<label>Pass Marks</label>
+		<input type="text" name="passmarks"  [(ngModel)]="subject.PassMark" class="form-control">
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+	<button type="button" class="btn btn-outline" (click)="closeForm()">Close</button>
+
+
+</form>
+
+<table class="table">
+	<tr > 
+    <td>SN</td>
+    <td>Subject</td>
+    <td>Class</td>
+    <td>Full Mark</td>
+    <td>Pass Mark</td>
+    <td>Action</td>
+
+   </tr>
+   <tr *ngFor="let subject of subjectList; let i=index"> 
+   	<td>{{i+1}}</td>
+   	<td>{{subject.subjectName}}</td>
+   	<td>{{subject.class}}</td>
+   	<td>{{subject.FullMark}}</td>
+   	<td>{{subject.PassMark}}</td>
+   	<td>
+   		<button class="btn btn-link" (click)="editSubject(subject._id, i)">Edit</button>
+   		<button class="btn btn-link" (click)="deleteSubject(subject._id , i)">Delete</button>
+
+   	</td>
+
+   </tr>
+
+	 
+
+
+</table>

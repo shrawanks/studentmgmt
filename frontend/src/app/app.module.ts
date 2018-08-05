@@ -24,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './user/profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
-import { StudentlistComponent } from './admin/studentlist/studentlist.component'
+import { StudentlistComponent } from './admin/studentlist/studentlist.component';
+import { SubjectlistComponent } from './admin/subjectlist/subjectlist.component'
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { StudentlistComponent } from './admin/studentlist/studentlist.component'
     AdminComponent,
     DashboardComponent,
     StudentlistComponent,
+    SubjectlistComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -11,5 +11,5 @@ export class AdminService {
   getStudents() {
   	return this.http.get('https://reqres.in/api/users')
   }
-
+ 
 }
