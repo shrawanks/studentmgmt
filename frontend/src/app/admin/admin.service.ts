@@ -11,5 +11,9 @@ export class AdminService {
   getStudents() {
   	return this.http.get('https://reqres.in/api/users')
   }
- 
+
+  addStudent(student){
+    return this.http.post('https://reqres.in/api/users')
+  }
+
 }
