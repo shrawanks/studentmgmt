@@ -16,6 +16,7 @@ export class SubjectlistComponent implements OnInit {
 	editMode=false;
 	editId;
 	editFid;
+  success:any
   constructor(private subjectService:SubjectService) { }
 
   ngOnInit() {
@@ -34,7 +35,7 @@ export class SubjectlistComponent implements OnInit {
   		this.subjectService.postSubject(this.subject)
   		.subscribe(success=>{
   			console.log(success)
-  			this.subjectList.push(success.data);
+  			this.subjectList.push(success['data']);
   			console.log(this.subjectList);
   			this.closeForm();
   		}, error=>{
@@ -45,7 +46,7 @@ export class SubjectlistComponent implements OnInit {
   getSubject() {
   	this.subjectService.getSubject()
 			.subscribe(response=>{
-				this.subjectList=response.data
+				this.subjectList=response['data']
 			}, error=>{
 
 			})
@@ -55,6 +56,7 @@ export class SubjectlistComponent implements OnInit {
   	this.subjectService.deleteSubject(id)
   	.subscribe(response=>{
   			this.subjectList.splice(fid, 1);
+        this.success = response['message']
   	}, error=>{
   		console.log(error)
   	})
@@ -73,7 +75,7 @@ export class SubjectlistComponent implements OnInit {
   	this.subjectService.updateSubject(this.editId, this.subject)
   	.subscribe(response=>{
   		this.subjectList[this.editFid] = this.subject;
-
+      this.success = response['message']
   	}, error=>{
 
   	})
