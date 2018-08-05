@@ -15,7 +15,7 @@ export interface Fruit {
 })
 export class AppComponent {
 
-	constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
         'thumbs-up',
         sanitizer.bypassSecurityTrustResourceUrl('assets/img/examples/thumbup-icon.svg'));

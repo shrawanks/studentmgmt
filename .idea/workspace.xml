@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="385e9972-7dc1-4535-8d21-8e0cec7da8e0" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -9,6 +10,10 @@
       <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/user/signup/signup.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/user/signup/signup.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/user/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/user/user.service.ts" afterDir="false" />
+=======
+    <list default="true" id="f418a111-0020-4874-b2af-b5aa1dc250d5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,6 +28,7 @@
     <session id="-386381405">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+<<<<<<< HEAD
           <entry key="project.closed" value="3" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.6" value="1" />
@@ -55,26 +61,47 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="TypeScript" value="6" />
+=======
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.opened" value="1" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/app/home/home.component.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
               <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+=======
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/src/app/home/home.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/frontend/src/app/user/signup/signup.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="440">
               <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+=======
+        <entry file="file://$PROJECT_DIR$/frontend/src/app/home/home.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -82,6 +109,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/app/user/user.service.ts">
           <provider selected="true" editor-type-id="text-editor">
@@ -115,12 +143,20 @@
       </list>
     </option>
   </component>
+=======
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+<<<<<<< HEAD
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/frontend/node_modules" />
   </component>
@@ -1347,18 +1383,27 @@
       <path value="$PROJECT_DIR$/frontend/package.json" />
     </packageJsonPaths>
   </component>
+=======
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="85" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
+<<<<<<< HEAD
     <option name="height" value="970" />
+=======
+    <option name="height" value="969" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1390,6 +1435,7 @@
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
               <item name="app-routing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -1408,20 +1454,32 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="user" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
           </expand>
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="D:\xampp\htdocs\studentManagement-B\frontend\node_modules\tslint" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="D:\xampp\htdocs\studentManagement-B\frontend\node_modules\typescript\lib" />
+=======
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -1435,31 +1493,53 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="385e9972-7dc1-4535-8d21-8e0cec7da8e0" name="Default Changelist" comment="" />
+=======
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f418a111-0020-4874-b2af-b5aa1dc250d5" name="Default Changelist" comment="" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
       <created>1533299177642</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1533299177642</updated>
       <workItem from="1533299184809" duration="124000" />
+<<<<<<< HEAD
       <workItem from="1533299337631" duration="300000" />
       <workItem from="1533299660109" duration="1590000" />
+=======
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="2014000" />
+=======
+    <option name="totallyTimeSpent" value="124000" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2247191" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+=======
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2247191" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.20425531" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -1467,16 +1547,20 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.1177305" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
+=======
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
   </component>
+<<<<<<< HEAD
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
@@ -1544,6 +1628,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+=======
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/home/home.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/home/home.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+>>>>>>> f73ea56817b5c32eb9344f09247dcf7dc3494a5e
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
