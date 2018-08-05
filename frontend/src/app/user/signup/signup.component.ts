@@ -20,13 +20,13 @@ export class SignupComponent implements OnInit {
   model: any
   conPassValid = true
 
-  constructor(private userSerive: UserService, private router: Router) { }
-
-  ngOnInit() {
+  constructor(private userSerive: UserService, private router: Router) { 
     if (this.userSerive.isLoggedIn()) {
       this.router.navigate(['/profile'])
     }
   }
+
+  ngOnInit() { }
 
   confirmPassword(conpass) {
     if (conpass.value !== this.user.password) {
@@ -43,16 +43,18 @@ export class SignupComponent implements OnInit {
       console.log(this.user, 'user')
       this.userSerive.signup(this.user)
         .subscribe(data => {
-          console.log(data)
-          if (data['errors']) {
-            console.log(data['message'])
+          if (data['token']) {
+            this.successMsg = 'Great! You have been registered.'
+            localStorage.setItem('token', data['token'])
+            this.userSerive.token = data['token']
+            this.userSerive.currentUser = data['user']
+            this.router.navigate(['/profile'])
+            this.user = {}
+            this.submitted = false
           }
-          this.successMsg = 'Great! You have joined successfully'
-          this.router.navigate(['/login'])
-          this.user = {}
-          this.submitted = false
         }, error => {
           console.log(error)
+          this.error = error['error']['error']
           this.submitted = false
         })
     }

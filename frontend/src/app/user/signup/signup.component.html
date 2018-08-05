@@ -1,7 +1,9 @@
-<div class="text-success text-center" *ngIf="successMsg" [@fallIn]='state'>
-  {{successMsg}}
-</div>
-      <span class="error text-center" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
+      <div class="text-success text-center" *ngIf="successMsg" [@fallIn]='state'>
+        {{successMsg}}
+      </div>
+      <div *ngIf="error" class="alert alert-danger" role="alert" [@fallIn]='state'>
+        {{error}}
+      </div>
       <form #formData='ngForm' (ngSubmit)="!submitted && signup(formData)" autocomplete="off" novalidate="">
         <div class="form-row">
           <div class="form-group col-md-6">

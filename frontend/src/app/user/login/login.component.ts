@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { moveIn, fallIn } from '../../router.animations';
-import { UserService } from '../user.service';
-import { User } from '../user';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core'
+import { moveIn, fallIn } from '../../router.animations'
+import { UserService } from '../user.service'
+import { User } from '../user'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -14,30 +14,34 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  user: any = <User>{} || [];
-  submitted = false;
+  user: any = <User>{} || []
+  submitted = false
+  error = ''
 
-  constructor(private userSerive: UserService, private router: Router) { }
-
-  ngOnInit() {
+  constructor(private userSerive: UserService, private router: Router) {
     if (this.userSerive.isLoggedIn()) {
-      this.router.navigate(['/profile']);
+      this.router.navigate(['/profile'])
     }
   }
 
+  ngOnInit() { }
+
   login(formdata) {
-    this.submitted = true;
+    this.submitted = true
+    this.error = ''
+    this.user.password = ''
     this.userSerive.login(this.user).subscribe(data => {
       if (data['token']) {
-        localStorage.setItem('token', data['token']);
-        this.userSerive.token = data['token'];
-        this.userSerive.currentUser = data['user'];
-        this.router.navigate(['/profile']);
-        this.submitted = false;
+        localStorage.setItem('token', data['token'])
+        this.userSerive.token = data['token']
+        this.userSerive.currentUser = data['user']
+        this.router.navigate(['/profile'])
+        this.submitted = false
       }
     }, error => {
-        console.log(error);
-        this.submitted = false;
-    });
+        this.error = error['error']['error']
+        this.user.password = ''
+        this.submitted = false
+    })
   }
 }

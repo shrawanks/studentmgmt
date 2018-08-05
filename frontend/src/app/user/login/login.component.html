@@ -1,5 +1,8 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
+    <div *ngIf="error !== ''" class="alert alert-danger" role="alert" [@fallIn]='state'>
+      {{error}}
+    </div>
     <form #formData='ngForm' (ngSubmit)="!submitted && login(formData)">
       <div class="form-group">
         <label for="email">Email address</label>
@@ -26,7 +29,7 @@
           </small>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="formData.invalid">Login</button>
+      <button type="submit" class="btn btn-primary" [disabled]="formData.invalid || submitted">Login</button>
     </form>
   </div>
 </div>
