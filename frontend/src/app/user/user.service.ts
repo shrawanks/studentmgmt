@@ -21,6 +21,10 @@ export class UserService {
   	return this.http.post('https://reqres.in/api/login', user)
   }
 
+  getUserDetails(){
+    return this.http.get('https://reqres.in/api/users/2'); 
+  }
+
   getToken() {
   	if (!this.token) {
   		this.token = localStorage.getItem('token')
@@ -28,12 +32,14 @@ export class UserService {
   	return this.token
   }
 
+ 
   isLoggedIn(): boolean {
   	const token = this.getToken()
   	if (token) {
   		return true
    }
   	return false
+ 
   }
 
   logout() {

@@ -10,6 +10,8 @@ import { HomeComponent } from '../home/home.component';
 import { FooterComponent } from '../footer/footer.component';
 import { NotfoundComponent } from '../notfound/notfound.component';
 import { ProfileComponent } from '../user/profile/profile.component'
+import { DashboardComponent } from '../admin/dashboard/dashboard.component'
+import { StudentlistComponent } from '../admin/studentlist/studentlist.component'
 import { AuthGuardService } from '../auth-guard.service'
 
 const appRoute : Routes = [
@@ -17,6 +19,8 @@ const appRoute : Routes = [
   { path : 'login', component : LoginComponent },
   { path : 'profile', component : ProfileComponent, canActivate: [AuthGuardService] },
   { path : 'signup', component : HomeComponent },
+  { path : 'dashboard', component : DashboardComponent },
+  { path : 'dashboard/students', component : StudentlistComponent },
   { path : 'notfound', component : NotfoundComponent },
   { path : '**', pathMatch : 'full', redirectTo : '/notfound' }
 ];

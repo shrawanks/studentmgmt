@@ -5,6 +5,7 @@ import { Router } from '@angular/router'
 import { moveIn, fallIn } from '../../router.animations'
 
 
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,6 +20,7 @@ export class SignupComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   model: any
   conPassValid = true
+ 
 
   constructor(private userSerive: UserService, private router: Router) { 
     if (this.userSerive.isLoggedIn()) {
@@ -60,5 +62,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
+ 
 
 }
+ 
