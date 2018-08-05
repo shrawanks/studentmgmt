@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const User = mongoose.model('users')
-
+const crypto = require('crypto');
+const secret = 'AICT';
 class userController {
 	constructor() {}
 
@@ -48,7 +49,10 @@ class userController {
 	 * @return {[type]}     [description]
 	 */
 	create(req, res) {
-		console.log(req.body.f_name)
+		const hash = crypto.createHmac('sha256', secret)
+                   .update(req.body.password)
+                   .digest('hex');
+		//console.log(req.body.f_name)
 		let saveObj = {
 			f_name: req.body.f_name,
 			l_name: req.body.l_name,
@@ -56,7 +60,8 @@ class userController {
 			email: req.body.email,
 			phone:req.body.phone,
 			address:req.body.address,
-			password:req.body.password
+			password:hash
+			//password:req.body.password
 		}
 		//let saveObj = req.body.userObj
 		User.create(saveObj).then(createRes=> {
