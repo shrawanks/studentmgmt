@@ -21,7 +21,10 @@ import { appRoutes } from './app-routing/app-routing.module'
 import { RouterModule } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ProfileComponent } from './user/profile/profile.component'
+import { ProfileComponent } from './user/profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { StudentlistComponent } from './admin/studentlist/studentlist.component'
 
 
 
@@ -38,6 +41,9 @@ import { ProfileComponent } from './user/profile/profile.component'
     FooterComponent,
     NotfoundComponent,
     ProfileComponent,
+    AdminComponent,
+    DashboardComponent,
+    StudentlistComponent,
   ],
   imports: [
     BrowserAnimationsModule,

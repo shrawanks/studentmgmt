@@ -29,14 +29,12 @@ export class LoginComponent implements OnInit {
   login(formdata) {
     this.submitted = true
     this.error = ''
-    this.user.password = ''
     this.userSerive.login(this.user).subscribe(data => {
       if (data['token']) {
         localStorage.setItem('token', data['token'])
         this.userSerive.token = data['token']
         this.userSerive.currentUser = data['user']
-        this.router.navigate(['/profile'])
-        this.submitted = false
+        this.router.navigate(['/dashboard'])
       }
     }, error => {
         this.error = error['error']['error']
