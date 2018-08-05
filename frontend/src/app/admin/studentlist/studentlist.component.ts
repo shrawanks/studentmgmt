@@ -27,7 +27,7 @@ export class StudentlistComponent implements OnInit {
           "name": "morpheus",
           "job": "leader"
       }
-      this.adminService.addStudent().subscribe(data => {
+      this.adminService.addStudent(this.student).subscribe(data => {
         this.students.push(this.student)
       }, error =>{
         this.error = "Sorry could not add a student right now."
