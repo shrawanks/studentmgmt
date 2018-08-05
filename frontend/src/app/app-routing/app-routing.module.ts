@@ -7,6 +7,8 @@ import { SignupComponent } from '../user/signup/signup.component';
 import { LoginComponent } from '../user/login/login.component';
 import { MenuComponent } from '../header/menu/menu.component';
 import { HomeComponent } from '../home/home.component';
+import { SubjectlistComponent } from '../admin/subjectlist/subjectlist.component';
+
 import { FooterComponent } from '../footer/footer.component';
 import { NotfoundComponent } from '../notfound/notfound.component';
 import { ProfileComponent } from '../user/profile/profile.component'
@@ -20,6 +22,7 @@ const appRoute : Routes = [
   { path : 'profile', component : ProfileComponent, canActivate: [AuthGuardService] },
   { path : 'signup', component : HomeComponent },
   { path : 'dashboard', component : DashboardComponent },
+  { path : 'dashboard/subjects', component : SubjectlistComponent },
   { path : 'dashboard/students', component : StudentlistComponent },
   { path : 'notfound', component : NotfoundComponent },
   { path : '**', pathMatch : 'full', redirectTo : '/notfound' }
