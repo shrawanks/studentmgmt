@@ -18,7 +18,6 @@ export class SignupComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   model: any
   conPassValid = false
- 
 
   constructor(private userSerive: UserService, private router: Router) { 
     if (this.userSerive.isLoggedIn()) {
