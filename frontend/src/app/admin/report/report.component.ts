@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { StudentsService } from '../studentlist/students.service'
 import { ReportService } from './report.service'
+import { Router } from '@angular/router'
+import { moveIn, fallIn } from '../../router.animations'
+import { SubjectService } from '../subjectlist/subject.service'
 
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
-  styleUrls: ['./report.component.scss']
+  styleUrls: ['./report.component.scss'],
+  animations: [moveIn(), fallIn()],
+  // tslint:disable-next-line:use-host-property-decorator
+  host: {'[@moveIn]': ''}
 })
+
 export class ReportComponent implements OnInit {
   students: any = []
   student: string
   class: number
-  subjects: any = []
+  subjects: any = [{"name" : "English", passMark: 40}, {"name" : "Nepali", passMark: 40}]
+  submitted = false
 
   constructor(private studentService: StudentsService, private reportService: ReportService) { }
 
   ngOnInit() {
-    this.getStudents();
+    this.getStudents()
   }
 
-  getStudents(){
+  getStudents() {
     this.studentService.getStudents().subscribe(
       data => {
         console.log(data['data'])
@@ -28,11 +36,26 @@ export class ReportComponent implements OnInit {
     )
   }
 
-  classSelected(){
+  classSelected() {
     this.reportService.getSubjects(this.class).subscribe(
       response => {
         console.log(response['data'])
         this.subjects = response['data']
+      }
+    )
+  }
+
+  saveReport() {
+    this.submitted = true
+    const data = { 'studentId' : this.student, "classId": this.class, "subject" : this.subjects }
+    this.reportService.addReport(data).subscribe(
+      response => {
+        this.student = ""
+        this.class = null
+        this.subjects = []
+        this.submitted = false
+      }, error => {
+        this.submitted = false
       }
     )
   }

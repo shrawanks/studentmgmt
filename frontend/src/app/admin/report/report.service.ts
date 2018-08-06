@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 
 @Injectable({
@@ -8,8 +8,12 @@ export class ReportService {
 
   constructor(private http: HttpClient) { }
 
-  getSubjects(classId){
+  getSubjects(classId) {
     return this.http.get("http://192.168.1.215:3000/subject/byclass/" + classId)
+  }
+
+  addReport(data) {
+    return this.http.post("http://192.168.1.215:3000/report/add", data)
   }
 
 }

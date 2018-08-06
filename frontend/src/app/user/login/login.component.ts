@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core'
-import { moveIn, fallIn } from '../../router.animations'
 import { UserService } from '../user.service'
 import { User } from '../user'
 import { Router } from '@angular/router'
+import { moveIn, fallIn } from '../../router.animations'
 
 @Component({
   selector: 'app-login',

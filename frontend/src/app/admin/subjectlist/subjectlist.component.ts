@@ -58,9 +58,9 @@ export class SubjectlistComponent implements OnInit {
     console.log(form.valid)
     if (form.valid) {
   		this.subjectService.postSubject(this.subject)
-  		.subscribe(success => {
-  			console.log(success)
-  			this.subjectList.push(success['data'])
+  		.subscribe(responese => {
+  			console.log(responese)
+  			this.subjectList.push(responese)
   			console.log(this.subjectList)
   			this.closeForm()
   		}, error => {

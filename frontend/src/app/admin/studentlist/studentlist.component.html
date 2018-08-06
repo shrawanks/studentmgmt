@@ -5,10 +5,9 @@
 
 
 
-<form  (ngSubmit)="addStudent()"  >
+<form  (ngSubmit)="addStudent()">
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalCenterTitle">Please add your students</h5>
-     
   </div>
   <div class="modal-body">
     <div class="row">
@@ -58,7 +57,7 @@
   </div>
 </form>
 
-<table class="table">
+<table class="table" *ngIf="students.list > 0 else message">
   <tr>
     <th>SN</th>
     <th>Full Name</th>
@@ -76,3 +75,12 @@
     <td>Action</td>
   </tr>
 </table>
+
+<ng-template #message>
+  <div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>
+      {{ msg }}
+  </div>
+  <div *ngIf="!msg">
+    <div class="loader"><div class="ball-triangle-path"><div></div><div></div><div></div></div></div>
+  </div>
+</ng-template>

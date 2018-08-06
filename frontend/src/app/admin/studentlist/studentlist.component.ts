@@ -17,16 +17,21 @@ export class StudentlistComponent implements OnInit {
 	students: any = []
   user = <User> {} || []
   formshow = false
+  msg: string
  //  // student:any
  //  error:string;
 
   constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
-  	this.studentsService.getStudents()
-      .subscribe(response => {
-    		this.students = response
-    	})
+    this.getStudents()
+  }
+
+  getStudents(){
+    this.studentsService.getStudents()
+    .subscribe(response => {
+      this.students = response
+    })
   }
 
   showform() {
