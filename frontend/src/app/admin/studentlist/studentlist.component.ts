@@ -1,33 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import {StudentsService } from './students.service';
-import { User} from '../../user/user';
-declare var $:any;
+import { Component, OnInit } from '@angular/core'
+import {StudentsService } from './students.service'
+import { User} from '../../user/user'
+import { moveIn, fallIn } from '../../router.animations'
+import { Router } from '@angular/router'
+ 
 
 @Component({
   selector: 'app-studentlist',
   templateUrl: './studentlist.component.html',
-  styleUrls: ['./studentlist.component.scss']
+  styleUrls: ['./studentlist.component.scss'],
+  animations: [moveIn(), fallIn()],
+  // tslint:disable-next-line:use-host-property-decorator
+  host: {'[@moveIn]': ''}
 })
 export class StudentlistComponent implements OnInit {
 
-	students: any = [];
-  user = <User> {} || [];
-  formshow=false;
+	students: any = []
+  user = <User> {} || []
+  formshow = false
  //  // student:any
   error:string;
 
-  constructor(private StudentsService: StudentsService) { }
+  constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
+ 
   this.fetchStudent();
+ 
   }
 
-  showform(){
-    this.formshow=true;
+  showform() {
+    this.formshow = true
   }
 
+ 
   fetchStudent(){
-      this.StudentsService.getStudents()
+      this.studentsService.getStudents()
       .subscribe(response=>{
         console.log(response);
 
@@ -37,10 +45,12 @@ export class StudentlistComponent implements OnInit {
   }
 
   addStudent(){
+ 
     // alert();
     // debugger;
     // this.students=this.user;
     // this.students.push(this.user);
+ 
     // this.students.push(this.user);
     // console.log(this.students);
    
@@ -54,7 +64,7 @@ export class StudentlistComponent implements OnInit {
       //   this.error = "Sorry could not add a student right now."
       // })
 
-    
+ 
     // if (formData.valid){
       // this.student = {
       //     "name": "morpheus",

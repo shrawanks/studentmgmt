@@ -1,8 +1,76 @@
-<p>
-  This is admin's dashboard
-</p>
+<div class="row">
+  <h3 class="text-center col-md-12">
+    Hello Admin
+  </h3>
+  <br>
+  <br>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-title text-center">Students</div>
+      <div class="card-body">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Class</th>
+                  <th scope="col">Address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                  <td>the Bird</td>
+                  <td>@twitter</td>
+                </tr>
+              </tbody>
+            </table>
+            <a class="btn btn-primary float-left" routerLink="students">Manage Students</a>
+      </div>
+    </div>
+  </div>
 
-
-Total number of students and link to all student's component
-<br>
-Total number of subject and link to all subject's component
+  <div class="col-md-6">
+    <div class="card text-center">
+      <div class="card-title text-center">Subjects</div>
+      <div class="card-body">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Larry</td>
+                </tr>
+              </tbody>
+            </table>
+            <a class="btn btn-primary float-left" routerLink="subjects">Manage Subjects</a>
+      </div>
+    </div>
+  </div>
+</div>
