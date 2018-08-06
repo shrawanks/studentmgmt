@@ -71,7 +71,12 @@
           <label for="inputAddress">Address</label>
           <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
         </div>
-        <button type="submit"  [ngClass]="formData.valid ? 'checked' : 'unchecked'" class="btn btn-primary" [disabled]="formData.invalid || submitted" >Create my account</button>
+        <button type="submit"  [ngClass]="formData.valid ? 'checked' : 'unchecked'" class="btn btn-primary" [disabled]="formData.invalid || submitted || !conPassValid" >
+            <ng-container *ngIf="!submitted">
+                Create my account
+            </ng-container>
+            <div class="ball-pulse" *ngIf="submitted"><div></div><div></div><div></div></div>
+        </button>
       </form>
 
 <br>

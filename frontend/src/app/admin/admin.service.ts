@@ -13,7 +13,7 @@ export class AdminService {
   }
 
   addStudent(student){
-    return this.http.post('https://reqres.in/api/users')
+    return this.http.post('https://reqres.in/api/users', student)
   }
 
 }
