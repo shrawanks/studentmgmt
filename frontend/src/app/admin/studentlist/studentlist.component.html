@@ -1,11 +1,11 @@
 <div class="page-header d-flex justify-content-between">
   <h1 class="page-title">Students</h1>
-  <button type="button" class="btn btn-outline-primary"  (click)="showform()">Add Students</button>
+  <button type="button" class="btn btn-outline-primary"  (click)="showform()" data-toggle="modal" data-target="#addStudentForm">Add Students</button>
 </div>
 
 
 
-<form  (ngSubmit)="addStudent()"  >
+<!-- <form  (ngSubmit)="addStudent()" *ngIf="formshow"  >
   <div class="modal-header">
     <h5 class="modal-title" id="exampleModalCenterTitle">Please add your students</h5>
      
@@ -56,23 +56,108 @@
     <button type="submit" class="btn btn-primary">Add Students</button>
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   </div>
-</form>
+</form> -->
 
 <table class="table">
   <tr>
     <th>SN</th>
     <th>Full Name</th>
     <th>Email</th>
-    <th>Class</th>
+    <!-- <th>Class</th> -->
+     
+    <th>Address</th>
+    <th>Phone</th>
     <th>Gender</th>
+
+	
     <th>Action</th>
   </tr>
-  <tr *ngFor="let student of students; let i=index">
+ <!--  <tr *ngFor="let student of students; let i=index">
     <td>{{i+1}}</td>
     <td>{{student.name}} {{student.l_name}}</td>
     <td>{{student.email}}</td>
     <td>{{student.grade}}</td>
     <td>{{student.gender}}</td>
     <td>Action</td>
+  </tr> -->
+
+  <tr *ngFor="let student of students; let i=index">
+    <td>{{i+1}}</td>
+    <td>{{student.firstName}} {{student.lastName}}</td>
+    <td>{{student.email}}</td>
+    <!-- <td>{{student.grade}}</td> -->
+    <td>{{student.address}}</td>
+    <td>{{student.phone}}</td>
+	<td>{{student.gender}}</td>
+    <td>Action</td>
   </tr>
 </table>
+
+
+
+ 
+
+<!-- Modal -->
+<div class="modal fade" id="addStudentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" *ngIf="formshow">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+
+  	<form  (ngSubmit)="addStudent()"   >
+    <div class="modal-content">
+      <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalCenterTitle">Please add your students</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">First Name</label>
+          <input type="text" name="firstrname" class="form-control" [(ngModel)]="user.firstName">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Last Name</label>
+          <input type="text" name="lastname" class="form-control" [(ngModel)]="user.lastName">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Email Adderss</label>
+      <input type="email" class="form-control" name="email" [(ngModel)]="user.email">
+    </div>
+    <div class="form-group">
+      <label for="">Class</label>
+      <select name="" id="" class="form-control" name="grade" [(ngModel)]="user.grade">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="">Gender</label>
+      <select name="" id="" class="form-control" name="gender" [(ngModel)]="user.gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+      </div>
+      <div class="modal-footer justify-content-start">
+    <button type="submit" class="btn btn-primary">Add Students</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  </div>
+    </div>
+</form>
+
+
+  </div>
+</div>

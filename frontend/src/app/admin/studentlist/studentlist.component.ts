@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StudentsService } from './students.service';
 import { User} from '../../user/user';
+declare var $:any;
 
 @Component({
   selector: 'app-studentlist',
@@ -13,19 +14,26 @@ export class StudentlistComponent implements OnInit {
   user = <User> {} || [];
   formshow=false;
  //  // student:any
- //  error:string;
+  error:string;
 
   constructor(private StudentsService: StudentsService) { }
 
   ngOnInit() {
-  	this.StudentsService.getStudents()
-      .subscribe(response=>{
-    		this.students = response; 
-    	})
+  this.fetchStudent();
   }
 
   showform(){
     this.formshow=true;
+  }
+
+  fetchStudent(){
+      this.StudentsService.getStudents()
+      .subscribe(response=>{
+        console.log(response);
+
+        this.students = response.data; 
+         
+      })
   }
 
   addStudent(){
@@ -33,8 +41,19 @@ export class StudentlistComponent implements OnInit {
     // debugger;
     // this.students=this.user;
     // this.students.push(this.user);
-    this.students.push(this.user);
-    console.log(this.students);
+    // this.students.push(this.user);
+    // console.log(this.students);
+   
+      this.students.push(this.user);
+       this.formshow=false;
+    $('#addStudentForm').modal('hide');
+      // this.StudentsService.addStudent(this.user)
+      // .subscribe(response => {
+      //   this.students.push(this.user)
+      // }, error =>{
+      //   this.error = "Sorry could not add a student right now."
+      // })
+
     
     // if (formData.valid){
       // this.student = {

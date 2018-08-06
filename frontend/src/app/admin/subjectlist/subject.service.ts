@@ -9,7 +9,7 @@ export class SubjectService {
   constructor(private http: HttpClient) { }
 
    getSubject() {
-  	return this.http.get('http://192.168.1.215:3000/subject')
+  	return this.http.get('http://192.168.1.215:3000/subject/')
   }
 
   postSubject(subject) {
