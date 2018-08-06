@@ -1,37 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-
-import { AdminService } from '../admin.service'
+import { Component, OnInit } from '@angular/core'
+import {StudentsService } from './students.service'
+import { User} from '../../user/user'
+import { moveIn, fallIn } from '../../router.animations'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-studentlist',
   templateUrl: './studentlist.component.html',
-  styleUrls: ['./studentlist.component.scss']
+  styleUrls: ['./studentlist.component.scss'],
+  animations: [moveIn(), fallIn()],
+  // tslint:disable-next-line:use-host-property-decorator
+  host: {'[@moveIn]': ''}
 })
 export class StudentlistComponent implements OnInit {
 
-	students:any
-  student:any
-  error:string
+	students: any = []
+  user = <User> {} || []
+  formshow = false
+ //  // student:any
+ //  error:string;
 
-  constructor(private adminService: AdminService) { }
+  constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
-  	this.adminService.getStudents().subscribe(data=>{
-  		this.students = data['data'];
-  	})
+  	this.studentsService.getStudents()
+      .subscribe(response => {
+    		this.students = response
+    	})
   }
 
-  addStudent(){
+  showform() {
+    this.formshow = true
+  }
+
+  addStudent() {
+    // alert();
+    // debugger;
+    // this.students=this.user;
+    // this.students.push(this.user);
+    this.students.push(this.user)
+    console.log(this.students)
+
     // if (formData.valid){
-      this.student = {
-          "name": "morpheus",
-          "job": "leader"
-      }
-      this.adminService.addStudent(this.student).subscribe(data => {
-        this.students.push(this.student)
-      }, error =>{
-        this.error = "Sorry could not add a student right now."
-      })
+      // this.student = {
+      //     "name": "morpheus",
+      //     "job": "leader
+      // }
+      // this.students.push(this.user);
+      // this.StudentsService.addStudent(this.student).subscribe(response => {
+      //   this.students.push(this.student)
+      // }, error =>{
+      //   this.error = "Sorry could not add a student right now."
+      // })
 
     // }
   }

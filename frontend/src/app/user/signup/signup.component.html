@@ -1,4 +1,6 @@
-      <div class="text-success text-center" *ngIf="successMsg" [@fallIn]='state'>
+      <header class="page-header">
+        <h1 class="page-title">Sign Up</h1>
+      </header><div class="text-success text-center" *ngIf="successMsg" [@fallIn]='state'>
         {{successMsg}}
       </div>
       <div *ngIf="error" class="alert alert-danger" role="alert" [@fallIn]='state'>
