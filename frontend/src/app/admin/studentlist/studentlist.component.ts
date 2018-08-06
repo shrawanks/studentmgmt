@@ -1,41 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import {StudentsService } from './students.service';
-import { User} from '../../user/user';
+import { Component, OnInit } from '@angular/core'
+import {StudentsService } from './students.service'
+import { User} from '../../user/user'
+import { moveIn, fallIn } from '../../router.animations'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-studentlist',
   templateUrl: './studentlist.component.html',
-  styleUrls: ['./studentlist.component.scss']
+  styleUrls: ['./studentlist.component.scss'],
+  animations: [moveIn(), fallIn()],
+  // tslint:disable-next-line:use-host-property-decorator
+  host: {'[@moveIn]': ''}
 })
 export class StudentlistComponent implements OnInit {
 
-	students: any = [];
-  user = <User> {} || [];
-  formshow=false;
+	students: any = []
+  user = <User> {} || []
+  formshow = false
  //  // student:any
  //  error:string;
 
-  constructor(private StudentsService: StudentsService) { }
+  constructor(private studentsService: StudentsService) { }
 
   ngOnInit() {
-  	this.StudentsService.getStudents()
-      .subscribe(response=>{
-    		this.students = response; 
+  	this.studentsService.getStudents()
+      .subscribe(response => {
+    		this.students = response
     	})
   }
 
-  showform(){
-    this.formshow=true;
+  showform() {
+    this.formshow = true
   }
 
-  addStudent(){
+  addStudent() {
     // alert();
     // debugger;
     // this.students=this.user;
     // this.students.push(this.user);
-    this.students.push(this.user);
-    console.log(this.students);
-    
+    this.students.push(this.user)
+    console.log(this.students)
+
     // if (formData.valid){
       // this.student = {
       //     "name": "morpheus",

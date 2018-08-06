@@ -1,0 +1,55 @@
+<p class="text-center">
+  report works!
+</p>
+
+<br>
+<form>
+    <div class="form-row">
+      <div class="col">
+        <label for="selectStudent">Select Student</label>
+        <select class="form-control" [(ngModel)]="student" name="student">
+          <option *ngFor="let student of students" [ngValue]="student._id">{{student.firstName}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="selectStudent">Select Class</label>
+        <select class="form-control" [(ngModel)]="class" name="class" (change)="classSelected()">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+    </div>
+</form>
+
+<ng-container *ngIf="subjects.length > 0">
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Full Marks</th>
+          <th scope="col">Pass Marks</th>
+          <th scope="col">Obtained Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subject of subjects; let i = index">
+          <th scope="row">{{ i + 1}}</th>
+          <td>{{ subject.subjectName }}</td>
+          <td>{{ subject.FullMark }}</td>
+          <td>{{ subject.PassMark }}</td>
+          <td><input type="text" [(ngModel)]="subjects[i].obtainedMarks"></td>
+        </tr>
+      </tbody>
+    </table>
+</ng-container>
+
+<button class="btn btn-primary" (click)="saveReport()">Save</button>

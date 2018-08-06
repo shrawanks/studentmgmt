@@ -10,6 +10,7 @@ import { NotfoundComponent } from '../notfound/notfound.component'
 import { ProfileComponent } from '../user/profile/profile.component'
 import { DashboardComponent } from '../admin/dashboard/dashboard.component'
 import { StudentlistComponent } from '../admin/studentlist/studentlist.component'
+import { ReportComponent } from '../admin/report/report.component'
 
 import { AuthGuardService } from '../auth-guard.service'
 
@@ -21,6 +22,7 @@ const appRoute: Routes = [
   { path : 'dashboard', component : DashboardComponent, canActivate: [AuthGuardService] },
   { path : 'dashboard/subjects', component : SubjectlistComponent, canActivate: [AuthGuardService] },
   { path : 'dashboard/students', component : StudentlistComponent, canActivate: [AuthGuardService] },
+  { path : 'dashboard/report', component : ReportComponent, canActivate: [AuthGuardService] },
   { path : 'notfound', component : NotfoundComponent },
   { path : '**', pathMatch : 'full', redirectTo : '/notfound' }
 ]

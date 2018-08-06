@@ -32,8 +32,9 @@ export class SubjectlistComponent implements OnInit {
 		if (!this.subjectService.subjectList) {
 			this.subjectService.getSubject()
 			.subscribe(response => {
-				this.subjectService.subjectList = response['data']
-				this.subjectList = response['data']
+				console.log(response)
+				this.subjectService.subjectList = response
+				this.subjectList = response
 			}, error => {
 				this.msg = "Can't fetch the data right now."
 			})
