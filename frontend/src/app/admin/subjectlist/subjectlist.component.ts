@@ -27,19 +27,21 @@ export class SubjectlistComponent implements OnInit {
   }
   closeForm(){
   		this.showSubject=false;
-
+      this.editMode = false;
+      this.subject = {}
   }
 
-  submitSubject(){
-  		this.subjectService.postSubject(this.subject)
-  		.subscribe(success=>{
-  			console.log(success)
-  			this.subjectList.push(success.data);
-  			console.log(this.subjectList);
-  			this.closeForm();
-  		}, error=>{
-  			console.log(error)
-  		})
+  submitSubject(form){
+    console.log(form.valid)
+  		// this.subjectService.postSubject(this.subject)
+  		// .subscribe(success=>{
+  		// 	console.log(success)
+  		// 	this.subjectList.push(success.data);
+  		// 	console.log(this.subjectList);
+  		// 	this.closeForm();
+  		// }, error=>{
+  		// 	console.log(error)
+  		// })
   }
 
   getSubject() {
@@ -73,7 +75,7 @@ export class SubjectlistComponent implements OnInit {
   	this.subjectService.updateSubject(this.editId, this.subject)
   	.subscribe(response=>{
   		this.subjectList[this.editFid] = this.subject;
-
+      this.closeForm();
   	}, error=>{
 
   	})

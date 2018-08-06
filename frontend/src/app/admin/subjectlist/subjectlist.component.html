@@ -4,10 +4,11 @@
 
 <button class="btn btn-primary" (click)="showSubjectForm();">Add Subject</button>
 
-<form *ngIf="showSubject" (ngSubmit)="editMode ? updateSubject() : submitSubject()"  >
+<form *ngIf="showSubject" #form="ngForm" (ngSubmit)="editMode ? updateSubject(form) : submitSubject(form)"  >
 	<div class="form-group">
 		<label>Subject Name</label>
-		<input type="text" name="subjectname" [(ngModel)]="subject.subjectName" class="form-control">
+		<input type="text" #subName="ngModel" name="subjectname" [(ngModel)]="subject.subjectName" class="form-control" required>
+    <p *ngIf="subName">error</p>
 	</div>
 	<div class="form-group">
 		<label>Class</label>
@@ -28,7 +29,7 @@
 </form>
 
 <table class="table">
-	<tr > 
+	<tr >
     <td>SN</td>
     <td>Subject</td>
     <td>Class</td>
@@ -37,7 +38,7 @@
     <td>Action</td>
 
    </tr>
-   <tr *ngFor="let subject of subjectList; let i=index"> 
+   <tr *ngFor="let subject of subjectList; let i=index">
    	<td>{{i+1}}</td>
    	<td>{{subject.subjectName}}</td>
    	<td>{{subject.class}}</td>
@@ -51,7 +52,7 @@
 
    </tr>
 
-	 
+
 
 
 </table>
