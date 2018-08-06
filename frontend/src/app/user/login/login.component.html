@@ -33,7 +33,12 @@
           </small>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="formData.invalid || submitted">Login</button>
+      <button type="submit" class="btn btn-primary" [disabled]="formData.invalid || submitted">
+        <ng-container *ngIf="!submitted">
+            Login
+        </ng-container>
+        <div class="ball-pulse" *ngIf="submitted"><div></div><div></div><div></div></div>
+      </button>
     </form>
   </div>
 </div>

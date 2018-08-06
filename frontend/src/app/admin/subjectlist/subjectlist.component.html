@@ -3,7 +3,8 @@
 </div>
 
 <button class="btn btn-primary" (click)="showSubjectForm();">Add Subject</button>
-
+<br>
+<br>
 <form *ngIf="showSubject" #form="ngForm" (ngSubmit)="editMode ? updateSubject(form) : submitSubject(form)"  >
 	<div class="form-group">
 		<label>Subject Name</label>
@@ -22,13 +23,12 @@
 		<label>Pass Marks</label>
 		<input type="text" name="passmarks"  [(ngModel)]="subject.PassMark" class="form-control" required>
 	</div>
-	<button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button>
+	<button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button> &nbsp;
 	<button type="button" class="btn btn-outline" (click)="closeForm()">Close</button>
-
-
 </form>
 
-<table class="table">
+<br>
+<table class="table" *ngIf="subjectList else message">
 	<tr > 
     <td>SN</td>
     <td>Subject</td>
@@ -36,7 +36,6 @@
     <td>Full Mark</td>
     <td>Pass Mark</td>
     <td>Action</td>
-
    </tr>
    <tr *ngFor="let subject of subjectList; let i=index"> 
    	<td>{{i+1}}</td>
@@ -47,12 +46,15 @@
    	<td>
    		<button class="btn btn-link" (click)="editSubject(subject._id, i)">Edit</button>
    		<button class="btn btn-link" (click)="deleteSubject(subject._id , i)">Delete</button>
-
    	</td>
-
    </tr>
-
-	 
-
-
 </table>
+
+<ng-template #message>
+	<div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>
+			{{ msg }}
+	</div>
+	<div *ngIf="!msg">
+		<div class="loader"><div class="ball-triangle-path"><div></div><div></div><div></div></div></div>
+	</div>
+</ng-template>

@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/dashboard'])
       }
     }, error => {
+        console.log(error)
         this.error = error['error']['error']
         this.user.password = ''
         this.submitted = false
