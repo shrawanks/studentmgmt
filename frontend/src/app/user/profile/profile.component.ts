@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { moveIn, fallIn } from '../../router.animations';
-
+import { Component, OnInit, HostBinding } from '@angular/core'
+import { moveIn, fallIn } from '../../router.animations'
 import { UserService } from '../user.service'
 
 @Component({
@@ -12,17 +11,16 @@ import { UserService } from '../user.service'
   host: {'[@moveIn]': ''}
 })
 export class ProfileComponent implements OnInit {
-
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-  	if (this.userService.currentUser !== {}){
-  		this.userService.getUserDetails().subscribe(data=>{
-  			this.userService.currentUser = data['data'];
+  	if (this.userService.currentUser !== {}) {
+  		this.userService.getUserDetails().subscribe(data => {
+  			this.userService.currentUser = data['data']
   			console.log(this.userService.currentUser)
 	  	}, error => {
 	  		console.log(error)
-	  	});
+	  	})
   	}
   }
 

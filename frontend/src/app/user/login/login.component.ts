@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, HostBinding } from '@angular/core'
 import { UserService } from '../user.service'
 import { User } from '../user'
 import { Router } from '@angular/router'
@@ -9,11 +9,9 @@ import { moveIn, fallIn } from '../../router.animations'
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   animations: [moveIn(), fallIn()],
-  // tslint:disable-next-line:use-host-property-decorator
-  host: {'[@moveIn]': ''}
 })
 export class LoginComponent implements OnInit {
-
+  @HostBinding('@moveIn')
   user: any = <User>{} || []
   submitted = false
   error = ''

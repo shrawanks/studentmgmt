@@ -14,7 +14,6 @@ export interface Fruit {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
         'thumbs-up',

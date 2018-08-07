@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, HostBinding } from '@angular/core'
 import {StudentsService } from './students.service'
 import { User} from '../../user/user'
 import { moveIn, fallIn } from '../../router.animations'
@@ -9,17 +9,15 @@ import { Router } from '@angular/router'
   templateUrl: './studentlist.component.html',
   styleUrls: ['./studentlist.component.scss'],
   animations: [moveIn(), fallIn()],
-  // tslint:disable-next-line:use-host-property-decorator
-  host: {'[@moveIn]': ''}
 })
 export class StudentlistComponent implements OnInit {
-
+  @HostBinding('@moveIn')
 	students: any = []
   user = <User> {} || []
   formshow = false
   msg: string
- //  // student:any
- //  error:string;
+  // student:any
+  //  error:string;
 
   constructor(private studentsService: StudentsService) { }
 
@@ -27,11 +25,12 @@ export class StudentlistComponent implements OnInit {
     this.getStudents()
   }
 
-  getStudents(){
-    this.studentsService.getStudents()
-    .subscribe(response => {
-      this.students = response
-    })
+  getStudents() {
+    this.studentsService.getStudents().subscribe(
+      response => {
+        this.students = response
+      }
+    )
   }
 
   showform() {

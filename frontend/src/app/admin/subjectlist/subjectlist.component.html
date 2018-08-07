@@ -48,7 +48,7 @@
     <td>Pass Mark</td>
     <td>Action</td>
    </tr>
-   <tr *ngFor="let subject of subjectList; let i=index">
+   <tr *ngFor="let subject of subjectList; let i=index" [@moveIn]='state'>
    	<td>{{i+1}}</td>
    	<td>{{subject.name}}</td>
    	<td>{{subject.class}}</td>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, HostListener } from '@angular/core'
 import { User } from '../user'
 import { UserService } from '../user.service'
 import { Router } from '@angular/router'
@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
   model: any
   conPassValid = false
 
-  constructor(private userSerive: UserService, private router: Router) { 
+  constructor(private userSerive: UserService, private router: Router) {
     if (this.userSerive.isLoggedIn()) {
       this.router.navigate(['/profile'])
     }
@@ -58,7 +58,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
- 
+
 
 }
- 
+

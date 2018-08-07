@@ -13,7 +13,7 @@ export class UserService {
 
 
   signup(user) {
-	  //return this.http.post('http://192.168.1.180:3000/user', user)
+	  // return this.http.post('http://192.168.1.180:3000/user', user)
 	  return this.http.post('https://reqres.in/api/register', user)
   }
 
@@ -21,8 +21,8 @@ export class UserService {
   	return this.http.post('https://reqres.in/api/login', user)
   }
 
-  getUserDetails(){
-    return this.http.get('https://reqres.in/api/users/2'); 
+  getUserDetails() {
+    return this.http.get('https://reqres.in/api/users/2')
   }
 
   getToken() {
@@ -32,14 +32,14 @@ export class UserService {
   	return this.token
   }
 
- 
+
   isLoggedIn(): boolean {
   	const token = this.getToken()
   	if (token) {
   		return true
    }
   	return false
- 
+
   }
 
   logout() {

@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, HostBinding } from '@angular/core'
 import { StudentsService } from '../studentlist/students.service'
 import { ReportService } from './report.service'
-import { Router } from '@angular/router'
 import { moveIn, fallIn } from '../../router.animations'
-import { SubjectService } from '../subjectlist/subject.service'
 
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.scss'],
-  animations: [moveIn(), fallIn()],
-  // tslint:disable-next-line:use-host-property-decorator
-  host: {'[@moveIn]': ''}
+  animations: [moveIn(), fallIn()]
 })
 
 export class ReportComponent implements OnInit {
+  @HostBinding('@moveIn')
   students: any = []
   student: string
   class: number
