@@ -4,4 +4,5 @@ classId: string
 fullMark: string
 passMark: string
 id: string
+
 }

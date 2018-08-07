@@ -10,6 +10,7 @@ export class StudentsService {
 
   getStudents() {
   	return this.http.get('http://192.168.1.215:3000/users')
+
   }
 
   addStudent(student) {

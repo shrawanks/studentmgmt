@@ -4,6 +4,7 @@ import { User} from '../../user/user'
 import { moveIn, fallIn } from '../../router.animations'
 import { Router } from '@angular/router'
 
+
 @Component({
   selector: 'app-studentlist',
   templateUrl: './studentlist.component.html',
@@ -37,13 +38,37 @@ export class StudentlistComponent implements OnInit {
     this.formshow = true
   }
 
-  addStudent() {
+
+  fetchStudent(){
+      this.studentsService.getStudents()
+      .subscribe(response=>{
+        console.log(response);
+
+        this.students = response.data;
+
+      })
+  }
+
+  addStudent(){
+
     // alert();
     // debugger;
     // this.students=this.user;
     // this.students.push(this.user);
-    this.students.push(this.user)
-    console.log(this.students)
+
+    // this.students.push(this.user);
+    // console.log(this.students);
+
+      this.students.push(this.user);
+       this.formshow=false;
+    $('#addStudentForm').modal('hide');
+      // this.StudentsService.addStudent(this.user)
+      // .subscribe(response => {
+      //   this.students.push(this.user)
+      // }, error =>{
+      //   this.error = "Sorry could not add a student right now."
+      // })
+
 
     // if (formData.valid){
       // this.student = {

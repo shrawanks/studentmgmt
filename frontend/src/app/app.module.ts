@@ -18,15 +18,17 @@ import { FooterComponent } from './footer/footer.component'
 import { UserService } from './user/user.service'
 import { FormsModule } from '@angular/forms'
 import { appRoutes } from './app-routing/app-routing.module'
-import { RouterModule } from '@angular/router'
-import { NotfoundComponent } from './notfound/notfound.component'
-import { HttpClientModule } from '@angular/common/http'
-import { ProfileComponent } from './user/profile/profile.component'
-import { AdminComponent } from './admin/admin.component'
-import { DashboardComponent } from './admin/dashboard/dashboard.component'
-import { StudentlistComponent } from './admin/studentlist/studentlist.component'
-import { SubjectlistComponent } from './admin/subjectlist/subjectlist.component'
+import { RouterModule } from '@angular/router';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './user/profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { StudentlistComponent } from './admin/studentlist/studentlist.component';
+import { SubjectlistComponent } from './admin/subjectlist/subjectlist.component';
+import { MarksheetComponent } from './admin/marksheet/marksheet.component'
 import { ReportComponent } from './admin/report/report.component'
+
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { ReportComponent } from './admin/report/report.component'
     DashboardComponent,
     StudentlistComponent,
     SubjectlistComponent,
+    MarksheetComponent,
     ReportComponent,
   ],
   imports: [
