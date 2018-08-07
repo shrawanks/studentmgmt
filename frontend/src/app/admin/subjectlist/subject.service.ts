@@ -18,11 +18,11 @@ export class SubjectService {
   }
 
   deleteSubject(id) {
-  	return this.http.delete('http://192.168.1.215:3000/subject/' + id)
+  	return this.http.delete('http://192.168.1.229:3000/subject/' + id)
   }
 
   updateSubject(id, subject) {
-  	return this.http.put('http://192.168.1.215:3000/subject/' + id, subject)
+  	return this.http.put('http://192.168.1.229:3000/subject/' + id, subject)
   }
 
 }

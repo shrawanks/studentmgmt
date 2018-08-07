@@ -52,21 +52,20 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
+                  <th scope="col">Full Mark</th>
+                  <th scope="col">Pass Mark</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                </tr>
+                <ng-container *ngFor="let subject of subjectList; let i = index" [@fallIn]='state'>
+                  <tr *ngIf="i < 3">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{subject.name}}</td>
+                    <td>{{subject.fullMark}}</td>
+                    <td>{{subject.passmark}}</td>
+                  </tr>
+                </ng-container>
+                  
               </tbody>
             </table>
             <a class="btn btn-primary float-left" routerLink="subjects">Manage Subjects</a>

@@ -74,6 +74,7 @@ export class SubjectlistComponent implements OnInit {
   deleteSubject(id, fid) {
   	this.subjectService.deleteSubject(id)
   	.subscribe(response => {
+				console.log(response)
   			this.subjectList.splice(fid, 1)
         this.success = response['message']
   	}, error => {
@@ -96,9 +97,11 @@ export class SubjectlistComponent implements OnInit {
   		this.subjectList[this.editFid] = this.subject
       this.success = response['message']
       this.editMode = false
-	  this.submitted = true
+			this.submitted = false
+			this.closeForm()
   	}, error => {
 		this.submitted = false
+		this.editMode = false
   	})
   }
 

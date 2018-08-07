@@ -2,12 +2,14 @@
   <h2 style="text-decoration: underline">Report</h2>
 </div>
 
+
+{{marksheet}}
 <br>
 <form #form="ngForm">
     <div class="form-row">
       <div class="col">
         <label for="selectStudent">Select Student</label>
-        <select class="form-control" [(ngModel)]="student" name="student">
+        <select class="form-control" [(ngModel)]="student" name="student" #stu="ngModel" required>
           <option *ngFor="let student of students" [ngValue]="student._id">{{student.firstName}}</option>
         </select>
       </div>
@@ -43,14 +45,14 @@
         <tbody>
           <tr *ngFor="let subject of subjects; let i = index">
             <th scope="row">{{ i + 1}}</th>
-            <td>{{ subject.name }}</td>
-            <td>{{ subject.fullMark }}</td>
-            <td>{{ subject.passMark }}</td>
+            <td>{{ subject.subjectName }}</td>
+            <td>{{ subject.FullMark }}</td>
+            <td>{{ subject.PassMark }}</td>
             <td>
               <input type="text" class="form-control col-md-2" placeholder="100" [(ngModel)]="subject.obtainedMarks" name="obmark">
             </td>
-            <td *ngIf="subject.obtainedMarks && subject.obtainedMarks >= subject.passMark" class="text-success">Pass</td>
-            <td *ngIf="subject.obtainedMarks && subject.obtainedMarks < subject.passMark" class="text-danger">Fail</td>
+            <td *ngIf="subject.obtainedMarks && subject.obtainedMarks >= subject.PassMark" class="text-success">Pass</td>
+            <td *ngIf="subject.obtainedMarks && subject.obtainedMarks < subject.PassMark" class="text-danger">Fail</td>
             <td *ngIf="!subject.obtainedMarks" class="text-muted">N/A</td>
           </tr>
         </tbody>

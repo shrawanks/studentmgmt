@@ -32,7 +32,7 @@
 	</div>
 	<div class="form-group">
 		<label>Pass Marks</label>
-		<input type="text" name="passmarks"  [(ngModel)]="subject.passMark" class="form-control" required>
+		<input type="text" name="passmarks"  [(ngModel)]="subject.passmark" class="form-control" required>
 	</div>
 	<button type="submit" class="btn btn-primary" [disabled]="form.invalid || submitted">
 		<ng-container *ngIf="!submitted">
@@ -43,6 +43,7 @@
 	&nbsp;
 	<button type="button" class="btn btn-outline" (click)="closeForm()">Close</button>
 </form>
+
 
 <br>
 <table class="table" *ngIf="subjectList else message">
@@ -57,9 +58,9 @@
    <tr *ngFor="let subject of subjectList; let i=index" [@fallIn]='state'>
    	<td>{{i+1}}</td>
    	<td>{{subject.name}}</td>
-   	<td>{{subject.class}}</td>
+   	<td>{{subject.classId}}</td>
    	<td>{{subject.fullMark}}</td>
-   	<td>{{subject.passMark}}</td>
+   	<td>{{subject.passmark}}</td>
    	<td>
    		<button class="btn btn-link" (click)="editSubject(subject._id, i)">Edit</button>
    		<button class="btn btn-link" (click)="deleteSubject(subject._id , i)">Delete</button>

@@ -13,7 +13,7 @@ export class ReportService {
   }
 
   addReport(data) {
-    return this.http.post("http://192.168.1.215:3000/report/add", data)
+    return this.http.post("http://192.168.1.215:3000/marksheet/create", data)
   }
 
 }
