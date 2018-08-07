@@ -1,3 +1,15 @@
-<p *ngIf="userService.currentUser">
+<p *ngIf="userService.currentUser else message">
   {{userService.currentUser.first_name}}
+  <br>
 </p>
+
+<ng-template #message>
+	<div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>
+			{{ msg }}
+	</div>
+	<div *ngIf="!msg">
+		<div class="loader"><div class="ball-triangle-path"><div></div><div></div><div></div></div></div>
+	</div>
+</ng-template>
+
+<input type="file" (change)="fileChanged($event)">

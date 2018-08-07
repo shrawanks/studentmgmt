@@ -25,20 +25,23 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   login(formdata) {
-    this.submitted = true
-    this.error = ''
-    this.userSerive.login(this.user).subscribe(data => {
-      if (data['token']) {
-        localStorage.setItem('token', data['token'])
-        this.userSerive.token = data['token']
-        this.userSerive.currentUser = data['user']
-        this.router.navigate(['/dashboard'])
-      }
-    }, error => {
-        console.log(error)
-        this.error = error['error']['error']
-        this.user.password = ''
-        this.submitted = false
-    })
+    if (formdata.valid) {
+      this.submitted = true
+      this.error = ''
+      this.userSerive.login(this.user).subscribe(data => {
+        console.log(data)
+        if (data['token']) {
+          localStorage.setItem('token', data['token'])
+          this.userSerive.token = data['token']
+          this.userSerive.currentUser = data['user']
+          this.router.navigate(['/dashboard'])
+        }
+      }, error => {
+          console.log(error)
+          this.error = error['error']['error']
+          this.user.password = ''
+          this.submitted = false
+      })
+    }
   }
 }

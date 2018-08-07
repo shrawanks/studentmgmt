@@ -34,7 +34,13 @@
 		<label>Pass Marks</label>
 		<input type="text" name="passmarks"  [(ngModel)]="subject.passMark" class="form-control" required>
 	</div>
-	<button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button> &nbsp;
+	<button type="submit" class="btn btn-primary" [disabled]="form.invalid || submitted">
+		<ng-container *ngIf="!submitted">
+			Submit
+		</ng-container>
+		<div class="ball-pulse" *ngIf="submitted"><div></div><div></div><div></div></div>
+	</button>
+	&nbsp;
 	<button type="button" class="btn btn-outline" (click)="closeForm()">Close</button>
 </form>
 
@@ -48,7 +54,7 @@
     <td>Pass Mark</td>
     <td>Action</td>
    </tr>
-   <tr *ngFor="let subject of subjectList; let i=index" [@moveIn]='state'>
+   <tr *ngFor="let subject of subjectList; let i=index" [@fallIn]='state'>
    	<td>{{i+1}}</td>
    	<td>{{subject.name}}</td>
    	<td>{{subject.class}}</td>

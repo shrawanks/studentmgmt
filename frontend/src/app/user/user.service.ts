@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 
 
 @Injectable({
@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http'
 })
 export class UserService {
 	token: string
-	currentUser: {} = {}
+	currentUser: {} = null
 
   constructor(private http: HttpClient) { }
 
@@ -18,10 +18,15 @@ export class UserService {
   }
 
   login(user) {
-  	return this.http.post('https://reqres.in/api/login', user)
+    // return this.http.post('http://192.168.1.243:3000/login', user)
+    return this.http.post('https://reqres.in/api/login', user)
   }
 
   getUserDetails() {
+    // let headers = new HttpHeaders()
+    // const token = this.getToken()
+    // headers = headers.append('x-access-token', token)
+    // return this.http.get('http://192.168.1.243:3000/me', {headers : headers})
     return this.http.get('https://reqres.in/api/users/2')
   }
 
@@ -40,6 +45,15 @@ export class UserService {
    }
   	return false
 
+  }
+
+  uploadPic(pic) {
+    const fd = new FormData()
+    fd.append('profile_pic', pic, pic.name)
+    return this.http.post("http://192.168.1.243:3000/upload", fd, {
+      reportProgress: true,
+      observe: 'events'
+    })
   }
 
   logout() {

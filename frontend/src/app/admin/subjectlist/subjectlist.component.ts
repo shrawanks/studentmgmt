@@ -22,6 +22,7 @@ export class SubjectlistComponent implements OnInit {
 	editFid
 	success: any
 	msg: string
+	submitted = false
   constructor(private subjectService: SubjectService) { }
 
   ngOnInit() {
@@ -44,27 +45,28 @@ export class SubjectlistComponent implements OnInit {
 	}
 
   showSubjectForm() {
-  		this.showSubject = true
-	}
+	this.showSubject = true
+}
 
   closeForm() {
-		this.showSubject = false
-		this.editMode = false
-		this.subject = new Subject
-
+	this.showSubject = false
+	this.editMode = false
+	this.subject = new Subject
   }
 
   submitSubject(form) {
+	this.submitted = true
     console.log(form.valid)
     if (form.valid) {
   		this.subjectService.postSubject(this.subject)
   		.subscribe(responese => {
   			console.log(responese)
   			this.subjectList.push(responese)
-  			console.log(this.subjectList)
-  			this.closeForm()
+			this.closeForm()
+			this.submitted = false
   		}, error => {
-  			console.log(error)
+			console.log(error)
+			this.submitted = false
   		})
     }
   }
@@ -94,9 +96,9 @@ export class SubjectlistComponent implements OnInit {
   		this.subjectList[this.editFid] = this.subject
       this.success = response['message']
       this.editMode = false
-      this.subject = new Subject
+	  this.submitted = true
   	}, error => {
-
+		this.submitted = false
   	})
   }
 

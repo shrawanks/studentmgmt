@@ -13,6 +13,7 @@ import { StudentlistComponent } from '../admin/studentlist/studentlist.component
 import { ReportComponent } from '../admin/report/report.component'
 
 import { AuthGuardService } from '../auth-guard.service'
+import { AdminGuardService } from '../admin-guard.service'
 
 const appRoute: Routes = [
   { path : '', component : HomeComponent },
