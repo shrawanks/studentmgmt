@@ -4,6 +4,7 @@ import { User} from '../../user/user'
 import { moveIn, fallIn } from '../../router.animations'
 import { Router } from '@angular/router'
  
+ declare var $:any;
 
 @Component({
   selector: 'app-studentlist',
@@ -39,7 +40,7 @@ export class StudentlistComponent implements OnInit {
       .subscribe(response=>{
         console.log(response);
 
-        this.students = response.data; 
+        this.students = response['data']; 
          
       })
   }
@@ -54,15 +55,17 @@ export class StudentlistComponent implements OnInit {
     // this.students.push(this.user);
     // console.log(this.students);
    
-      this.students.push(this.user);
-       this.formshow=false;
+      // this.students.push(this.user);
+
     $('#addStudentForm').modal('hide');
-      // this.StudentsService.addStudent(this.user)
-      // .subscribe(response => {
-      //   this.students.push(this.user)
-      // }, error =>{
-      //   this.error = "Sorry could not add a student right now."
-      // })
+      this.studentsService.addStudent(this.user)
+      .subscribe(response => {
+        console.log(response);
+        this.students.push(this.user)
+      }, error =>{
+        this.error = "Sorry could not add a student right now."
+      })
+      this.formshow=false;
 
  
     // if (formData.valid){

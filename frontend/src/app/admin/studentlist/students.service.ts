@@ -9,12 +9,12 @@ export class StudentsService {
   constructor(private http: HttpClient) { }
 
   getStudents() {
-  	return this.http.get('http://192.168.1.215:3000/users')
+  	return this.http.get('http://192.168.1.229:3000/user')
 
   }
 
   addStudent(student) {
-    return this.http.post('https://reqres.in/api/users', student)
+    return this.http.post('http://192.168.1.229:3000/user', student)
   }
 
 }
