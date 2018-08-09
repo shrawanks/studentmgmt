@@ -14,7 +14,8 @@ import { SubjectService } from '../subjectlist/subject.service'
 export class DashboardComponent implements OnInit {
   @HostBinding ('@moveIn')
   students
-  subjectList
+	subjectList
+	msg
 
   constructor(private report: ReportService, private subjectService: SubjectService) { }
 

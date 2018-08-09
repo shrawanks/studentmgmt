@@ -15,9 +15,9 @@ export class ReportComponent implements OnInit {
   students: any = []
   student: string
   class: number
-  subjects: any = [{"name" : "English", passMark: 40}, {"name" : "Nepali", passMark: 40}]
+  subjects: any = []
   submitted = false
-  a = []
+  marksheet = []
 
   constructor(private studentService: StudentsService, private reportService: ReportService) { }
 
@@ -26,17 +26,11 @@ export class ReportComponent implements OnInit {
   }
 
   getStudents() {
-    this.a.push("a") 
+    this.a.push("a")
     this.studentService.getStudents().subscribe(
       data => {
         console.log(data['data'])
         this.students = data['data']
-        
-        this.students.forEach(function(i) {
-          this.marksheet.push({
-            "subjectID" : i._id,
-          })
-        })
       }
     )
   }
@@ -52,7 +46,12 @@ export class ReportComponent implements OnInit {
 
   saveReport() {
     this.submitted = true
-    const data = { 'studentId' : this.student, "class": this.class, "marksheet" : this.subjects }
+    this.students.forEach(function(i) {
+      this.marksheet.push({
+        "subjectID" : i._id,
+      })
+    })
+    const data = { 'studentId' : this.student, "class": this.class, "marksheet" : this.marksheet }
     console.log(data)
     this.reportService.addReport(data).subscribe(
       response => {
