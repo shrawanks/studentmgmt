@@ -8,6 +8,7 @@
     <div class="card">
       <div class="card-title text-center">Students</div>
       <div class="card-body">
+        <ng-template *ngIf="students; else loader">
           <table class="table">
               <thead>
                 <tr>
@@ -37,8 +38,14 @@
                   <td>@twitter</td>
                 </tr>
               </tbody>
-            </table>
-            <a class="btn btn-primary float-left" routerLink="students">Manage Students</a>
+          </table>
+          <a class="btn btn-primary float-left" routerLink="students">Manage Students</a>
+        </ng-template>
+        <ng-template #loader>
+            <div _ngcontent-c5="" class="loader">
+              <div _ngcontent-c5="" class="ball-triangle-path"><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div></div>
+            </div>
+        </ng-template>
       </div>
     </div>
   </div>
@@ -47,6 +54,7 @@
     <div class="card text-center">
       <div class="card-title text-center">Subjects</div>
       <div class="card-body">
+        <ng-template *ngIf="subjectList; else loader1">
           <table class="table">
               <thead>
                 <tr>
@@ -67,8 +75,14 @@
                 </ng-container>
                   
               </tbody>
-            </table>
-            <a class="btn btn-primary float-left" routerLink="subjects">Manage Subjects</a>
+          </table>
+          <a class="btn btn-primary float-left" routerLink="subjects">Manage Subjects</a>
+        </ng-template>
+        <ng-template #loader1>
+            <div _ngcontent-c5="" class="loader">
+              <div _ngcontent-c5="" class="ball-triangle-path"><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div></div>
+            </div>
+        </ng-template>
       </div>
     </div>
   </div>

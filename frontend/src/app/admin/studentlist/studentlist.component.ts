@@ -41,15 +41,15 @@ export class StudentlistComponent implements OnInit {
 
   fetchStudent(){
       this.studentsService.getStudents()
-      .subscribe(response=>{
-        console.log(response);
+      .subscribe(response => {
+        console.log(response)
 
-        this.students = response.data;
+        this.students = response['data']
 
       })
   }
 
-  addStudent(){
+  addStudent() {
 
     // alert();
     // debugger;
@@ -61,7 +61,7 @@ export class StudentlistComponent implements OnInit {
 
       this.students.push(this.user);
        this.formshow=false;
-    $('#addStudentForm').modal('hide');
+    //$('#addStudentForm').modal('hide');
       // this.StudentsService.addStudent(this.user)
       // .subscribe(response => {
       //   this.students.push(this.user)
