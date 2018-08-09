@@ -17,7 +17,7 @@ export class ReportComponent implements OnInit {
   class: number
   subjects: any = [{"name" : "English", passMark: 40}, {"name" : "Nepali", passMark: 40}]
   submitted = false
-  marksheet
+  a = []
 
   constructor(private studentService: StudentsService, private reportService: ReportService) { }
 
@@ -26,10 +26,12 @@ export class ReportComponent implements OnInit {
   }
 
   getStudents() {
+    this.a.push("a") 
     this.studentService.getStudents().subscribe(
       data => {
         console.log(data['data'])
         this.students = data['data']
+        
         this.students.forEach(function(i) {
           this.marksheet.push({
             "subjectID" : i._id,
