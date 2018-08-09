@@ -4,8 +4,9 @@ module.exports = app => {
 	    user(req, res, next)
 	})
 
-	app.use('/book', (req, res, next) => {
-	    let book = require('../api/booking')
-	    book(req, res, next)
+	app.use('/subject', (req, res, next) => {
+	    let subject = require('../api/subject')
+	    subject(req, res, next)
 	})
+
 }

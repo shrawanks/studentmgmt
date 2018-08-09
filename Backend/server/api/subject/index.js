@@ -9,4 +9,6 @@ router.post('/', controller.create.bind(controller))
 router.post('/save', controller.save.bind(controller))
 router.put('/:id', controller.update.bind(controller))
 router.delete('/:id', controller.delete.bind(controller))
+router.get('/getClass', controller.get.bind(controller))
+
 module.exports = router

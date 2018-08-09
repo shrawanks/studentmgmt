@@ -9,11 +9,15 @@ const userSchema = new schema({
 	dob:String,
 	email:{
 		type: String,
-		required: true
+		required: true,
+		unique:true
 	},
 	phone: Number,
 	address:String,
-	password:String
+	password:String,
+	type: Number,
+	gender:String,
+	classID:Number
 },{
 		timestamps:true
 	})
