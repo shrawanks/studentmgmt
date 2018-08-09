@@ -49,6 +49,7 @@ export class ReportComponent implements OnInit {
     this.students.forEach(function(i) {
       this.marksheet.push({
         "subjectID" : i._id,
+        "obtainedMarks" : i_ob;
       })
     })
     const data = { 'studentId' : this.student, "class": this.class, "marksheet" : this.marksheet }
