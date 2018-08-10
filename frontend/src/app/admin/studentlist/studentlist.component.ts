@@ -49,7 +49,9 @@ export class StudentlistComponent implements OnInit {
       })
   }
 
-  addStudent() {
+  addStudent(form) {
+
+    form.click();
 
     // alert();
     // debugger;

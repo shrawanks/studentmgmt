@@ -2,20 +2,12 @@
   <h2 style="text-decoration: underline">Report</h2>
 </div>
 
-
-{{marksheet}}
 <br>
 <form #form="ngForm">
     <div class="form-row">
       <div class="col">
-        <label for="selectStudent">Select Student</label>
-        <select class="form-control" [(ngModel)]="student" name="student" #stu="ngModel" required>
-          <option *ngFor="let student of students" [ngValue]="student._id">{{student.firstName}}</option>
-        </select>
-      </div>
-      <div class="col">
         <label for="selectClass">Select Class</label>
-        <select class="form-control" [(ngModel)]="class" name="class" (change)="classSelected()" #cla="ngModel" required>
+        <select class="form-control" [(ngModel)]="class" name="class" (change)="getStudents()" #cla="ngModel" required>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -26,6 +18,12 @@
           <option value="8">8</option>
           <option value="9">9</option>
           <option value="10">10</option>
+        </select>
+      </div>
+      <div class="col" *ngIf="students.length > 0">
+        <label for="selectStudent">Select Student</label>
+        <select class="form-control" [(ngModel)]="student" (change)="getSubjects()" name="student" #stu="ngModel" required>
+          <option *ngFor="let student of students" [ngValue]="student._id">{{student.firstName}}</option>
         </select>
       </div>
     </div>
