@@ -44,6 +44,7 @@ export class DashboardComponent implements OnInit {
 		if (!this.studentService.students) {
 			this.studentService.getStudents()
 			.subscribe(response => {
+				console.log(response)
 				this.studentService.students = response['data']
 				this.students = response['data']
 			}, error => {

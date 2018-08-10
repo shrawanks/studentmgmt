@@ -1,6 +1,6 @@
 <div class="page-header d-flex justify-content-between">
   <h1 class="page-title">Students</h1>
-  <button type="button" class="btn btn-outline-primary"  (click)="showform()" data-toggle="modal" data-target="#addStudentForm">Add Students</button>
+  <button type="button" class="btn btn-outline-primary"  (click)="showform()" data-toggle="modal" data-target="#addStudentForm" #formtoggle>Add Students</button>
 </div>
 <table class="table" *ngIf="students else message">
   <tr>
@@ -22,7 +22,10 @@
     <td>{{student.address}}</td>
     <td>{{student.phone}}</td>
   	<td>{{student.gender}}</td>
-    <td>Action</td>
+    <td>
+      <button class="btn btn-link" (click)="editStudent(student._id, i, formtoggle)" data-toggle="modal" data-target="#addStudentForm">Edit</button>
+      <button class="btn btn-link" (click)="deleteStudent(student._id , i)">Delete</button>
+    </td>
   </tr>
 </table>
 
@@ -39,7 +42,7 @@
 
 
 
-<!-- Modal -->
+<!-- Form Modal -->
 <div class="modal fade" id="addStudentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" *ngIf="formshow">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <form  (ngSubmit)="addStudent(closeform)"   >
@@ -55,23 +58,23 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="">First Name</label>
-                <input type="text" name="firstrname" class="form-control" [(ngModel)]="user.firstName">
+                <input type="text" name="firstrname" class="form-control" [(ngModel)]="student.f_name">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="">Last Name</label>
-                <input type="text" name="lastname" class="form-control" [(ngModel)]="user.lastName">
+                <input type="text" name="lastname" class="form-control" [(ngModel)]="student.l_name">
               </div>
             </div>
           </div>
           <div class="form-group">
             <label for="">Email Adderss</label>
-            <input type="email" class="form-control" name="email" [(ngModel)]="user.email">
+            <input type="email" class="form-control" name="email" [(ngModel)]="student.email">
           </div>
           <div class="form-group">
             <label for="">Class</label>
-            <select name="" id="" class="form-control" name="grade" [(ngModel)]="user.grade">
+            <select class="form-control" name="grade" [(ngModel)]="student.classID">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -86,9 +89,9 @@
           </div>
           <div class="form-group">
             <label for="">Gender</label>
-            <select name="" id="" class="form-control" name="gender" [(ngModel)]="user.gender">
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+            <select class="form-control" name="gender" [(ngModel)]="student.gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
             </select>
           </div>
         </div>

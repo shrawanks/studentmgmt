@@ -14,9 +14,14 @@ import { Router } from '@angular/router'
 export class StudentlistComponent implements OnInit {
   @HostBinding('@moveIn')
 	students: any = []
-  user = <User> {} || []
   formshow = false
   msg: string
+  student
+  editFid
+  editId
+  editMode
+  success
+  submitted
   // student:any
   //  error:string;
 
@@ -31,7 +36,6 @@ export class StudentlistComponent implements OnInit {
       this.studentsService.getStudents().subscribe(
         response => {
           this.students = response['data']
-          console.log(this.students)
         }
       )
     } else {
@@ -66,6 +70,39 @@ export class StudentlistComponent implements OnInit {
       // })
 
     // }
+  }
+
+  deleteStudent(id, fid) {
+  	this.studentsService.deleteStudent(id)
+  	.subscribe(response => {
+				console.log(response)
+  			this.students.splice(fid, 1)
+        this.success = response['message']
+  	}, error => {
+  		console.log(error)
+  	})
+
+  }
+
+  editStudent(id, fid) {
+    this.showform()
+		this.student = this.students[fid]
+		this.editMode = true
+		this.editId = id
+		this.editFid = fid
+  }
+
+  updateStudent() {
+  	this.studentsService.updateStudent(this.editId, this.student)
+  	.subscribe(response => {
+  		this.studentsService[this.editFid] = this.student
+      this.success = response['message']
+      this.editMode = false
+			this.submitted = false
+  	}, error => {
+		this.submitted = false
+		this.editMode = false
+  	})
   }
 
 }

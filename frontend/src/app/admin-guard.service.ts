@@ -11,7 +11,7 @@ export class AdminGuardService implements CanActivate {
   constructor(private auth: UserService, private router: Router) { }
 
   canActivate() {
-    if (this.auth.isLoggedIn() && this.auth.currentUser['role'] === 1 ) {
+    if (this.auth.isLoggedIn() && this.auth.currentUser['type'] === 2 ) {
       return true
     }
     this.router.navigate(['/profile'])

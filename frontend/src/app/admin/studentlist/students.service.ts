@@ -24,4 +24,12 @@ export class StudentsService {
     return this.http.post('https://reqres.in/api/users', student)
   }
 
+  updateStudent(id, student){
+    return this.http.put("/" +  + id, student)
+  }
+
+  deleteStudent(id){
+    return this.http.delete("/" + id)
+  }
+
 }

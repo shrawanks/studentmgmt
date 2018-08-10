@@ -28,12 +28,12 @@ export class LoginComponent implements OnInit {
     if (formdata.valid) {
       this.submitted = true
       this.error = ''
-      this.userSerive.login(this.user).subscribe(data => {
-        console.log(data)
-        if (data['token']) {
-          localStorage.setItem('token', data['token'])
-          this.userSerive.token = data['token']
-          this.userSerive.currentUser = data['user']
+      this.userSerive.login(this.user).subscribe(response => {
+        console.log(response)
+        if (response['token']) {
+          localStorage.setItem('token', response['token'])
+          this.userSerive.token = response['token']
+          this.userSerive.currentUser = response['user']
           this.router.navigate(['/dashboard'])
         }
       }, error => {

@@ -19,7 +19,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let student of students; let i=index">
+                <tr *ngFor="let student of students; let i=index" [@fallIn]='state'>
                   <th scope="row">{{i + 1}}</th>
                   <td>{{student.f_name}} {{ student.l_name}}</td>
                   <td>{{student.classID}} </td>
@@ -37,13 +37,13 @@
       </div>
     </div>
   </div>
-
+  
   <div class="col-md-6">
     <div class="card text-center">
       <div class="card-title text-center">Subjects</div>
       <div class="card-body">
         <ng-container *ngIf="subjectList; else loader1">
-          <table class="table">
+          <table class="table" *ngIf="subjectList.length > 0 else msg" [@fallIn]='state'>
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -64,11 +64,17 @@
                   
               </tbody>
           </table>
+          <ng-template #msg>
+            <div [@fallIn]='state'>
+                No subject added yet
+            </div>
+            <br>
+          </ng-template>
           <a class="btn btn-primary float-left" routerLink="subjects">Manage Subjects</a>
         </ng-container>
         <ng-template #loader1>
-            <div _ngcontent-c5="" class="loader">
-              <div _ngcontent-c5="" class="ball-triangle-path"><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div></div>
+            <div class="loader">
+              <div class="ball-triangle-path"><div ></div><div ></div><div ></div></div>
             </div>
         </ng-template>
       </div>
