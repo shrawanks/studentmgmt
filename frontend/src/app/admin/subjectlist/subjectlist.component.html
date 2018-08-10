@@ -46,7 +46,7 @@
 
 
 <br>
-<table class="table" *ngIf="subjectList else message">
+<table class="table" *ngIf="subjectList.length > 0 else message">
 	<tr >
     <td>SN</td>
     <td>Subject</td>

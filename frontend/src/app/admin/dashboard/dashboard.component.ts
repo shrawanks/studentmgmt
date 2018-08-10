@@ -2,6 +2,7 @@ import { Component, OnInit, HostBinding } from '@angular/core'
 
 import { ReportService } from '../report/report.service'
 import { moveIn, fallIn } from '../../router.animations'
+import { StudentsService } from '../studentlist/students.service'
 import { SubjectService } from '../subjectlist/subject.service'
 
 @Component({
@@ -17,10 +18,11 @@ export class DashboardComponent implements OnInit {
 	subjectList
 	msg
 
-  constructor(private report: ReportService, private subjectService: SubjectService) { }
+  constructor(private report: ReportService, private subjectService: SubjectService, private studentService: StudentsService) { }
 
   ngOnInit() {
-    this.getSubject()
+		this.getSubject()
+		this.getStudents()
   }
 
   getSubject() {
@@ -28,13 +30,27 @@ export class DashboardComponent implements OnInit {
 			this.subjectService.getSubject()
 			.subscribe(response => {
 				console.log(response)
-				this.subjectService.subjectList = response
-				this.subjectList = response
+				this.subjectService.subjectList = response['data']
+				this.subjectList = response['data']
 			}, error => {
 				this.msg = "Can't fetch the data right now."
 			})
 		} else {
 			this.subjectList = this.subjectService.subjectList
+		}
+	}
+
+	getStudents() {
+		if (!this.studentService.students) {
+			this.studentService.getStudents()
+			.subscribe(response => {
+				this.studentService.students = response['data']
+				this.students = response['data']
+			}, error => {
+				this.msg = "Can't fetch the data right now."
+			})
+		} else {
+			this.students = this.studentService.students
 		}
 	}
 

@@ -26,7 +26,6 @@ export class ReportComponent implements OnInit {
   }
 
   getStudents() {
-    this.a.push("a")
     this.studentService.getStudents().subscribe(
       data => {
         console.log(data['data'])

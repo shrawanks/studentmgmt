@@ -14,7 +14,7 @@ export class UserService {
 
   signup(user) {
 	  // return this.http.post('http://192.168.1.180:3000/user', user)
-	  return this.http.post('https://reqres.in/api/register', user)
+	  return this.http.post('http://192.168.1.229:3000/user', user)
   }
 
   login(user) {

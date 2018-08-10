@@ -19,8 +19,8 @@ export class SignupComponent implements OnInit {
   model: any
   conPassValid = false
 
-  constructor(private userSerive: UserService, private router: Router) {
-    if (this.userSerive.isLoggedIn()) {
+  constructor(private userService: UserService, private router: Router) {
+    if (this.userService.isLoggedIn()) {
       this.router.navigate(['/profile'])
     }
   }
@@ -39,17 +39,20 @@ export class SignupComponent implements OnInit {
     if (formData.valid && this.conPassValid) {
       this.submitted = true
       this.user.role = 2
-      this.userSerive.signup(this.user)
-        .subscribe(data => {
-          if (data['token']) {
+      this.user.dob = this.user.date.year + "/" + this.user.date.month + "/" + this.user.date.day
+
+      this.userService.signup(this.user)
+        .subscribe(response => {
+          console.log(response)
+          if (response['jwttoken']) {
             this.successMsg = 'Great! You have been registered.'
-            localStorage.setItem('token', data['token'])
-            this.userSerive.token = data['token']
-            this.userSerive.currentUser = data['user']
+            localStorage.setItem('token', response['jwttoken'])
+            this.userService.token = response['jwttoken']
+            this.userService.currentUser = response['user']
             this.router.navigate(['/profile'])
             this.user = {}
-            this.submitted = false
           }
+          this.submitted = false
         }, error => {
           console.log(error)
           this.error = error['error']['error']

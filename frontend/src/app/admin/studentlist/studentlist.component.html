@@ -2,24 +2,23 @@
   <h1 class="page-title">Students</h1>
   <button type="button" class="btn btn-outline-primary"  (click)="showform()" data-toggle="modal" data-target="#addStudentForm">Add Students</button>
 </div>
-
-<table class="table" *ngIf="students.list > 0 else message">
+<table class="table" *ngIf="students else message">
   <tr>
     <th>SN</th>
     <th>Full Name</th>
     <th>Email</th>
-    <!-- <th>Class</th> -->
+    <th>Class</th>
     <th>Address</th>
     <th>Phone</th>
     <th>Gender</th>
     <th>Action</th>
   </tr>
 
-  <tr *ngFor="let student of students; let i=index">
+  <tr *ngFor="let student of students; let i=index" [@fallIn]='state'>
     <td>{{i+1}}</td>
-    <td>{{student.firstName}} {{student.lastName}}</td>
+    <td>{{student.f_name}} {{student.l_name}}</td>
     <td>{{student.email}}</td>
-    <!-- <td>{{student.grade}}</td> -->
+    <td>{{student.classID}}</td>
     <td>{{student.address}}</td>
     <td>{{student.phone}}</td>
   	<td>{{student.gender}}</td>
@@ -43,7 +42,7 @@
 <!-- Modal -->
 <div class="modal fade" id="addStudentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" *ngIf="formshow">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <form  (ngSubmit)="addStudent()"   >
+    <form  (ngSubmit)="addStudent(close)"   >
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterTitle">Please add your students</h5>
@@ -95,7 +94,7 @@
         </div>
         <div class="modal-footer justify-content-start">
         <button type="submit" class="btn btn-primary">Add Students</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" #close>Close</button>
       </div>
       </div>
     </form>

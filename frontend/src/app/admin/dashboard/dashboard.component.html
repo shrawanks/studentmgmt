@@ -8,7 +8,7 @@
     <div class="card">
       <div class="card-title text-center">Students</div>
       <div class="card-body">
-        <ng-template *ngIf="students; else loader">
+        <ng-container *ngIf="students else loader">
           <table class="table">
               <thead>
                 <tr>
@@ -19,28 +19,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
+                <tr *ngFor="let student of students; let i=index">
+                  <th scope="row">{{i + 1}}</th>
+                  <td>{{student.f_name}} {{ student.l_name}}</td>
+                  <td>{{student.classID}} </td>
+                  <td>{{student.address}}</td>
                 </tr>
               </tbody>
           </table>
           <a class="btn btn-primary float-left" routerLink="students">Manage Students</a>
-        </ng-template>
+        </ng-container>
         <ng-template #loader>
             <div _ngcontent-c5="" class="loader">
               <div _ngcontent-c5="" class="ball-triangle-path"><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div></div>
@@ -54,7 +42,7 @@
     <div class="card text-center">
       <div class="card-title text-center">Subjects</div>
       <div class="card-body">
-        <ng-template *ngIf="subjectList; else loader1">
+        <ng-container *ngIf="subjectList; else loader1">
           <table class="table">
               <thead>
                 <tr>
@@ -77,7 +65,7 @@
               </tbody>
           </table>
           <a class="btn btn-primary float-left" routerLink="subjects">Manage Subjects</a>
-        </ng-template>
+        </ng-container>
         <ng-template #loader1>
             <div _ngcontent-c5="" class="loader">
               <div _ngcontent-c5="" class="ball-triangle-path"><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div></div>

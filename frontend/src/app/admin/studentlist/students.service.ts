@@ -6,10 +6,12 @@ import {HttpClient} from '@angular/common/http'
 })
 export class StudentsService {
 
+  students
+
   constructor(private http: HttpClient) { }
 
   getStudents() {
-  	return this.http.get('http://192.168.1.215:3000/users')
+  	return this.http.get('http://192.168.1.229:3000/user')
 
   }
 

@@ -27,41 +27,24 @@ export class StudentlistComponent implements OnInit {
   }
 
   getStudents() {
-    this.studentsService.getStudents().subscribe(
-      response => {
-        this.students = response
-      }
-    )
+    if (!this.studentsService.students) {
+      this.studentsService.getStudents().subscribe(
+        response => {
+          this.students = response['data']
+          console.log(this.students)
+        }
+      )
+    } else {
+      this.students = this.studentsService.students
+    }
   }
 
   showform() {
     this.formshow = true
   }
 
-
-  fetchStudent(){
-      this.studentsService.getStudents()
-      .subscribe(response => {
-        console.log(response)
-
-        this.students = response['data']
-
-      })
-  }
-
-  addStudent() {
-
-    // alert();
-    // debugger;
-    // this.students=this.user;
-    // this.students.push(this.user);
-
-    // this.students.push(this.user);
-    // console.log(this.students);
-
-      this.students.push(this.user);
-       this.formshow=false;
-    //$('#addStudentForm').modal('hide');
+  addStudent(close) {
+      close.click()
       // this.StudentsService.addStudent(this.user)
       // .subscribe(response => {
       //   this.students.push(this.user)

@@ -14,7 +14,7 @@ import { moveIn, fallIn } from '../../router.animations'
 
 export class SubjectlistComponent implements OnInit {
 	@HostBinding('@moveIn')
-	subjectList: any
+	subjectList: any = []
 	showSubject: boolean
 	subject = <Subject> {} || []
 	editMode = false
@@ -30,12 +30,16 @@ export class SubjectlistComponent implements OnInit {
   }
 
   getSubject() {
-		if (!this.subjectService.subjectList) {
+		if (!this.subjectService.subjectList || this.subjectService.subjectList.length < 1) {
 			this.subjectService.getSubject()
 			.subscribe(response => {
 				console.log(response)
-				this.subjectService.subjectList = response
-				this.subjectList = response
+				if (response['data'].length === 0) {
+					this.msg = "No Subjects added yet"
+				} else {
+					this.subjectService.subjectList = response['data']
+					this.subjectList = response['data']
+				}
 			}, error => {
 				this.msg = "Can't fetch the data right now."
 			})
@@ -61,7 +65,7 @@ export class SubjectlistComponent implements OnInit {
   		this.subjectService.postSubject(this.subject)
   		.subscribe(responese => {
   			console.log(responese)
-  			this.subjectList.push(responese)
+  			this.subjectList.push(responese['data'])
 			this.closeForm()
 			this.submitted = false
   		}, error => {

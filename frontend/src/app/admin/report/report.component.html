@@ -10,7 +10,7 @@
       <div class="col">
         <label for="selectStudent">Select Student</label>
         <select class="form-control" [(ngModel)]="student" name="student" #stu="ngModel" required>
-          <option *ngFor="let student of students" [ngValue]="student._id">{{student.firstName}}</option>
+          <option *ngFor="let student of students" [ngValue]="student._id">{{student.f_name}}</option>
         </select>
       </div>
       <div class="col">
