@@ -21,24 +21,22 @@ export class ReportComponent implements OnInit {
 
   constructor(private studentService: StudentsService, private reportService: ReportService) { }
 
-  ngOnInit() {
-    this.getStudents()
-  }
+  ngOnInit() { }
 
-  getStudents() {
-    this.studentService.getStudents().subscribe(
-      data => {
-        console.log(data['data'])
-        this.students = data['data']
-      }
-    )
-  }
-
-  classSelected() {
+  getSubjects() {
     this.reportService.getSubjects(this.class).subscribe(
       response => {
         console.log(response['data'])
         this.subjects = response['data']
+      }
+    )
+  }
+
+  getStudents() {
+    this.studentService.getStudentsOfClass(this.class).subscribe(
+      data => {
+        console.log(data['data'])
+        this.students = data['data']
       }
     )
   }
@@ -48,11 +46,11 @@ export class ReportComponent implements OnInit {
     this.students.forEach(function(i) {
       this.marksheet.push({
         "subjectID" : i._id,
-        "obtainedMarks" : i_ob;
+        "obtainedMarks" : i.om
       })
     })
+
     const data = { 'studentId' : this.student, "class": this.class, "marksheet" : this.marksheet }
-    console.log(data)
     this.reportService.addReport(data).subscribe(
       response => {
         this.student = ""
