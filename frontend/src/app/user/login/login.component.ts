@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', response['token'])
           this.userSerive.token = response['token']
           this.userSerive.currentUser = response['user']
-          this.router.navigate(['/dashboard'])
+          this.router.navigate(['/profile'])
         }
       }, error => {
           console.log(error)

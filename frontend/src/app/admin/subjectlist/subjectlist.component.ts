@@ -1,6 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core'
 import { SubjectService} from './subject.service'
-import { Subject} from './subject'
+import { Subject } from './subject';
 import { Router } from '@angular/router'
 import { moveIn, fallIn } from '../../router.animations'
 
@@ -16,7 +16,7 @@ export class SubjectlistComponent implements OnInit {
 	@HostBinding('@moveIn')
 	subjectList: any = []
 	showSubject: boolean
-	subject = <Subject> {} || []
+	subject: Subject = <Subject> {}
 	editMode = false
 	editId
 	editFid

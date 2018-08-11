@@ -13,17 +13,15 @@ import { Router } from '@angular/router'
 })
 export class StudentlistComponent implements OnInit {
   @HostBinding('@moveIn')
-	students: any = []
+	students: any
   formshow = false
   msg: string
-  student
+  student: any = {} || []
   editFid
   editId
   editMode
   success
   submitted
-  // student:any
-  //  error:string;
 
   constructor(private studentsService: StudentsService) { }
 
@@ -36,6 +34,9 @@ export class StudentlistComponent implements OnInit {
       this.studentsService.getStudents().subscribe(
         response => {
           this.students = response['data']
+        },
+        error => {
+          this.msg = "Can't get the data right now."
         }
       )
     } else {

@@ -5,7 +5,7 @@
   <br>
   <br>
   <div class="col-md-6">
-    <div class="card">
+    <div class="card text-center">
       <div class="card-title text-center">Students</div>
       <div class="card-body">
         <ng-container *ngIf="students else loader">
@@ -27,13 +27,16 @@
                 </tr>
               </tbody>
           </table>
-          <a class="btn btn-primary float-left" routerLink="students">Manage Students</a>
         </ng-container>
         <ng-template #loader>
-            <div _ngcontent-c5="" class="loader">
-              <div _ngcontent-c5="" class="ball-triangle-path"><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div><div _ngcontent-c5="" class="ng-tns-c5-1"></div></div>
+            <div  class="loader" *ngIf="!stuMsg else stuerr">
+              <div  class="ball-triangle-path"><div></div><div></div><div></div></div>
             </div>
+            <ng-template #stuerr>
+              <div [@fallIn]='state'>{{ stuMsg }}</div>
+            </ng-template>
         </ng-template>
+        <a class="btn btn-primary float-left" routerLink="students">Manage Students</a>
       </div>
     </div>
   </div>
@@ -70,13 +73,16 @@
             </div>
             <br>
           </ng-template>
-          <a class="btn btn-primary float-left" routerLink="subjects">Manage Subjects</a>
         </ng-container>
         <ng-template #loader1>
-            <div class="loader">
+            <div class="loader" *ngIf="!subMsg else suberr">
               <div class="ball-triangle-path"><div ></div><div ></div><div ></div></div>
             </div>
+            <ng-template #suberr>
+              <div [@fallIn]='state'>{{ subMsg }}</div>
+            </ng-template>
         </ng-template>
+        <a class="btn btn-primary float-left" routerLink="subjects">Manage Subjects</a>
       </div>
     </div>
   </div>

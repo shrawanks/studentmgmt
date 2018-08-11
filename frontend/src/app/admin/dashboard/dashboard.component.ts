@@ -16,7 +16,8 @@ export class DashboardComponent implements OnInit {
   @HostBinding ('@moveIn')
   students
 	subjectList
-	msg
+	subMsg: string
+	stuMsg: string
 
   constructor(private report: ReportService, private subjectService: SubjectService, private studentService: StudentsService) { }
 
@@ -33,7 +34,7 @@ export class DashboardComponent implements OnInit {
 				this.subjectService.subjectList = response['data']
 				this.subjectList = response['data']
 			}, error => {
-				this.msg = "Can't fetch the data right now."
+				this.subMsg = "Can't fetch the data right now."
 			})
 		} else {
 			this.subjectList = this.subjectService.subjectList
@@ -48,7 +49,7 @@ export class DashboardComponent implements OnInit {
 				this.studentService.students = response['data']
 				this.students = response['data']
 			}, error => {
-				this.msg = "Can't fetch the data right now."
+				this.stuMsg = "Can't fetch the data right now."
 			})
 		} else {
 			this.students = this.studentService.students
