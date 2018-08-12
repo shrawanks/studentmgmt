@@ -1,11 +1,10 @@
 export class User {
-firstrname: string
-lastName: string
-dob: string
-address: string
-gender: string
-email: string
-password: string
-role: number
-grade: string
+  f_name: string;
+  l_name: string;
+  date: string;
+  address: string;
+  gender: string;
+  email: string;
+  password: string;
+  role: number;
 }

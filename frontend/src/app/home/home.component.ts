@@ -1,5 +1,5 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { moveIn, fallIn } from '../router.animations';
+import { Component, OnInit, HostBinding } from '@angular/core'
+import { moveIn, fallIn } from '../router.animations'
 
 @Component({
   selector: 'app-home',
@@ -8,11 +8,10 @@ import { moveIn, fallIn } from '../router.animations';
   animations: [moveIn()],
 })
 export class HomeComponent implements OnInit {
-  @HostBinding ('@moveIn')
+  @HostBinding('@moveIn')
   user
   constructor() { }
 
   ngOnInit() {
   }
-
 }
