@@ -1,8 +1,11 @@
 <div class="page-header d-flex justify-content-between">
   <h1 class="page-title">Students</h1>
-  <button type="button" class="btn btn-outline-primary"  (click)="showform()" data-toggle="modal" data-target="#addStudentForm" #formtoggle>Add Students</button>
+  <button type="button" class="btn btn-outline-primary" (click)="showform()" data-toggle="modal" data-target="#addStudentForm"
+    #formtoggle>Add Students</button>
 </div>
 <table class="table" *ngIf="students else message">
+  <input type="text" class="form-control" placeholder="Search by name.." name="filterValue" [(ngModel)]="filterValue">
+  <br>
   <tr>
     <th>SN</th>
     <th>Full Name</th>
@@ -14,14 +17,14 @@
     <th>Action</th>
   </tr>
 
-  <tr *ngFor="let student of students; let i=index" [@fallIn]='state'>
+  <tr *ngFor="let student of students | filter:'f_name':filterValue; let i=index" [@fallIn]='state'>
     <td>{{i+1}}</td>
     <td>{{student.f_name}} {{student.l_name}}</td>
     <td>{{student.email}}</td>
     <td>{{student.classID}}</td>
     <td>{{student.address}}</td>
     <td>{{student.phone}}</td>
-  	<td>{{student.gender}}</td>
+    <td>{{student.gender}}</td>
     <td>
       <button class="btn btn-link" (click)="editStudent(student._id, i, formtoggle)" data-toggle="modal" data-target="#addStudentForm">Edit</button>
       <button class="btn btn-link" (click)="deleteStudent(student._id , i)">Delete</button>
@@ -31,10 +34,16 @@
 
 <ng-template #message>
   <div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>
-      {{ msg }}
+    {{ msg }}
   </div>
   <div *ngIf="!msg">
-    <div class="loader"><div class="ball-triangle-path"><div></div><div></div><div></div></div></div>
+    <div class="loader">
+      <div class="ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
   </div>
 </ng-template>
 
@@ -43,9 +52,10 @@
 
 
 <!-- Form Modal -->
-<div class="modal fade" id="addStudentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" *ngIf="formshow">
+<div class="modal fade" id="addStudentForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true"
+  *ngIf="formshow">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <form  (ngSubmit)="addStudent(closeform)"   >
+    <form (ngSubmit)="addStudent(closeform)">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterTitle">Please add your students</h5>
@@ -96,9 +106,9 @@
           </div>
         </div>
         <div class="modal-footer justify-content-start">
-        <button type="submit" class="btn btn-primary">Add Students</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeform>Close</button>
-      </div>
+          <button type="submit" class="btn btn-primary">Add Students</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" #closeform>Close</button>
+        </div>
       </div>
     </form>
   </div>

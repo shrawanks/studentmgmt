@@ -22,6 +22,8 @@ export class SubjectlistComponent implements OnInit {
 	success: any;
 	msg: string;
 	submitted = false;
+	filterValue: string;
+
 	constructor(private subjectService: SubjectService) { }
 
 	ngOnInit() {
