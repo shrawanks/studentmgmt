@@ -1,35 +1,35 @@
-import { Injectable } from '@angular/core'
-import {HttpClient} from '@angular/common/http'
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentsService {
 
-  students
+  students;
 
   constructor(private http: HttpClient) { }
 
   getStudents() {
-  	return this.http.get('http://192.168.1.229:3000/user')
+    return this.http.get('http://192.168.1.229:3000/user');
 
   }
 
   getStudentsOfClass(classId) {
-  	return this.http.get('http://192.168.1.215:3000/userbyclass/' + classId)
+    return this.http.get('http://192.168.1.215:3000/userbyclass/' + classId);
 
   }
 
   addStudent(student) {
-    return this.http.post('https://reqres.in/api/users', student)
+    return this.http.post('https://reqres.in/api/users', student);
   }
 
-  updateStudent(id, student){
-    return this.http.put("/" +  + id, student)
+  updateStudent(id, student) {
+    return this.http.put("/" + + id, student);
   }
 
-  deleteStudent(id){
-    return this.http.delete("/" + id)
+  deleteStudent(id) {
+    return this.http.delete("/" + id);
   }
 
 }

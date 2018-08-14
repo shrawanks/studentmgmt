@@ -1,7 +1,10 @@
-import { Component, OnInit, HostBinding } from '@angular/core'
-import { StudentsService } from '../studentlist/students.service'
-import { ReportService } from './report.service'
-import { moveIn, fallIn } from '../../router.animations'
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { StudentsService } from '../studentlist/students.service';
+import { ReportService } from './report.service';
+import { moveIn, fallIn } from '../../router.animations';
+import { Report } from './report';
+import { Student } from '../studentlist/student';
+import { Subject } from '../subjectlist/subject';
 
 @Component({
   selector: 'app-report',
@@ -12,55 +15,51 @@ import { moveIn, fallIn } from '../../router.animations'
 
 export class ReportComponent implements OnInit {
   @HostBinding('@moveIn')
-  students: any = []
-  student: string
-  class: number
-  subjects: any = []
-  submitted = false
-  marksheet = []
+  students: Student[] = [];
+  subjects: Subject[] = [];
+  report: Report = <Report>{};
+  submitted = false;
 
   constructor(private studentService: StudentsService, private reportService: ReportService) { }
 
   ngOnInit() { }
 
   getSubjects() {
-    this.reportService.getSubjects(this.class).subscribe(
+    this.reportService.getSubjects(this.report.class).subscribe(
       response => {
-        console.log(response['data'])
-        this.subjects = response['data']
+        console.log(response['data']);
+        this.subjects = response['data'];
       }
-    )
+    );
   }
 
   getStudents() {
-    this.studentService.getStudentsOfClass(this.class).subscribe(
+    this.studentService.getStudentsOfClass(this.report.class).subscribe(
       data => {
-        console.log(data['data'])
-        this.students = data['data']
+        console.log(data['data']);
+        this.students = data['data'];
       }
-    )
+    );
   }
 
   saveReport() {
-    this.submitted = true
-    this.students.forEach(function(i) {
-      this.marksheet.push({
-        "subjectID" : i._id,
-        "obtainedMarks" : i.om
-      })
-    })
-
-    const data = { 'studentId' : this.student, "class": this.class, "marksheet" : this.marksheet }
-    this.reportService.addReport(data).subscribe(
+    this.submitted = true;
+    this.report.marks = [];
+    this.subjects.forEach(i => {
+      this.report.marks.push({
+        "subjectID": i._id,
+        "obtainedMarks": i.obtainedMarks
+      });
+    });
+    this.reportService.addReport(this.report).subscribe(
       response => {
-        this.student = ""
-        this.class = null
-        this.subjects = []
-        this.submitted = false
+        this.report = <Report>{};
+        this.subjects = [];
+        this.submitted = false;
       }, error => {
-        this.submitted = false
+        this.submitted = false;
       }
-    )
+    );
   }
 
 }

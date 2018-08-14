@@ -4,62 +4,66 @@
 
 <br>
 <form #form="ngForm">
-    <div class="form-row">
-      <div class="col">
-        <label for="selectClass">Select Class</label>
-        <select class="form-control" [(ngModel)]="class" name="class" (change)="getStudents()" #cla="ngModel" required>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select>
-      </div>
-      <div class="col" *ngIf="students.length > 0">
-        <label for="selectStudent">Select Student</label>
-        <select class="form-control" [(ngModel)]="student" (change)="getSubjects()" name="student" #stu="ngModel" required>
-          <option *ngFor="let student of students" [ngValue]="student._id">{{student.firstName}}</option>
-        </select>
-      </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="selectClass">Select Class</label>
+      <select class="form-control" [(ngModel)]="report.class" name="class" (change)="getStudents()" #cla="ngModel" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
     </div>
+    <div class="col" *ngIf="students.length > 0">
+      <label for="selectStudent">Select Student</label>
+      <select class="form-control" [(ngModel)]="report.studentId" (change)="getSubjects()" name="student" #stu="ngModel" required>
+        <option *ngFor="let student of students" [ngValue]="2">{{student.f_name}}</option>
+      </select>
+    </div>
+  </div>
   <br>
   <ng-container *ngIf="subjects.length > 0" [@fallIn]='state'>
     <table class="table text-center">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Subject</th>
-            <th scope="col">Full Marks</th>
-            <th scope="col">Pass Marks</th>
-            <th scope="col">Obtained Marks</th>
-            <th scope="col">Remarks</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let subject of subjects; let i = index">
-            <th scope="row">{{ i + 1}}</th>
-            <td>{{ subject.subjectName }}</td>
-            <td>{{ subject.FullMark }}</td>
-            <td>{{ subject.PassMark }}</td>
-            <td>
-              <input type="text" class="form-control col-md-2" placeholder="100" [(ngModel)]="subject.obtainedMarks" name="obmark">
-            </td>
-            <td *ngIf="subject.obtainedMarks && subject.obtainedMarks >= subject.PassMark" class="text-success">Pass</td>
-            <td *ngIf="subject.obtainedMarks && subject.obtainedMarks < subject.PassMark" class="text-danger">Fail</td>
-            <td *ngIf="!subject.obtainedMarks" class="text-muted">N/A</td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="submit" class="btn btn-primary" (click)="saveReport()" [disabled]="form.invalid || submitted">
-          <ng-container *ngIf="!submitted">
-              Save
-          </ng-container>
-          <div class="ball-pulse" *ngIf="submitted"><div></div><div></div><div></div></div>
-        </button>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Full Marks</th>
+          <th scope="col">Pass Marks</th>
+          <th scope="col">Obtained Marks</th>
+          <th scope="col">Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subject of subjects; let i = index">
+          <th scope="row">{{ i + 1}}</th>
+          <td>{{ subject.subjectName }}</td>
+          <td>{{ subject.FullMark }}</td>
+          <td>{{ subject.PassMark }}</td>
+          <td>
+            <input type="text" class="form-control col-md-2" placeholder="100" [(ngModel)]="subject.obtainedMarks" name="obmark">
+          </td>
+          <td *ngIf="subject.obtainedMarks && subject.obtainedMarks >= subject.PassMark" class="text-success">Pass</td>
+          <td *ngIf="subject.obtainedMarks && subject.obtainedMarks < subject.PassMark" class="text-danger">Fail</td>
+          <td *ngIf="!subject.obtainedMarks" class="text-muted">N/A</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary" (click)="saveReport()" [disabled]="form.invalid || submitted">
+      <ng-container *ngIf="!submitted">
+        Save
+      </ng-container>
+      <div class="ball-pulse" *ngIf="submitted">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </button>
   </ng-container>
 </form>
