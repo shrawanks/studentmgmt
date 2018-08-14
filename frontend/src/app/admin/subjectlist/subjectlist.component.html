@@ -1,11 +1,11 @@
 <div class="alert alert-success" role="alert" *ngIf="success">
-  {{success}}
+	{{success}}
 </div>
 
 <button class="btn btn-primary" (click)="showSubjectForm();">Add Subject</button>
 <br>
 <br>
-<form *ngIf="showSubject" #form="ngForm" (ngSubmit)="editMode ? updateSubject(form) : submitSubject(form)"  >
+<form *ngIf="showSubject" #form="ngForm" (ngSubmit)="editMode ? updateSubject(form) : submitSubject(form)">
 	<div class="form-group">
 		<label>Subject Name</label>
 		<input type="text" name="subjectname" [(ngModel)]="subject.name" #subjectName="ngModel" class="form-control" required>
@@ -28,17 +28,21 @@
 	</div>
 	<div class="form-group">
 		<label>Full Marks</label>
-		<input type="text" name="fullmarks"  [(ngModel)]="subject.fullMark" class="form-control" required>
+		<input type="text" name="fullmarks" [(ngModel)]="subject.fullMark" class="form-control" required>
 	</div>
 	<div class="form-group">
 		<label>Pass Marks</label>
-		<input type="text" name="passmarks"  [(ngModel)]="subject.passmark" class="form-control" required>
+		<input type="text" name="passmarks" [(ngModel)]="subject.passmark" class="form-control" required>
 	</div>
 	<button type="submit" class="btn btn-primary" [disabled]="form.invalid || submitted">
 		<ng-container *ngIf="!submitted">
 			Submit
 		</ng-container>
-		<div class="ball-pulse" *ngIf="submitted"><div></div><div></div><div></div></div>
+		<div class="ball-pulse" *ngIf="submitted">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
 	</button>
 	&nbsp;
 	<button type="button" class="btn btn-outline" (click)="closeForm()">Close</button>
@@ -47,32 +51,40 @@
 
 <br>
 <table class="table" *ngIf="subjectList.length > 0 else message">
-	<tr >
-    <td>SN</td>
-    <td>Subject</td>
-    <td>Class</td>
-    <td>Full Mark</td>
-    <td>Pass Mark</td>
-    <td>Action</td>
-   </tr>
-   <tr *ngFor="let subject of subjectList; let i=index" [@fallIn]='state'>
-   	<td>{{i+1}}</td>
-   	<td>{{subject.name}}</td>
-   	<td>{{subject.classId}}</td>
-   	<td>{{subject.fullMark}}</td>
-   	<td>{{subject.passmark}}</td>
-   	<td>
-   		<button class="btn btn-link" (click)="editSubject(subject._id, i)">Edit</button>
-   		<button class="btn btn-link" (click)="deleteSubject(subject._id , i)">Delete</button>
-   	</td>
-   </tr>
+	<input type="text" class="form-control" placeholder="Search by name.." name="filterValue" [(ngModel)]="filterValue">
+	<br>
+	<tr>
+		<td>SN</td>
+		<td>Subject</td>
+		<td>Class</td>
+		<td>Full Mark</td>
+		<td>Pass Mark</td>
+		<td>Action</td>
+	</tr>
+	<tr *ngFor="let subject of subjectList | filter:'name':filterValue; let i=index" [@fallIn]='state'>
+		<td>{{i+1}}</td>
+		<td>{{subject.name}}</td>
+		<td>{{subject.classId}}</td>
+		<td>{{subject.fullMark}}</td>
+		<td>{{subject.passmark}}</td>
+		<td>
+			<button class="btn btn-link" (click)="editSubject(subject._id, i)">Edit</button>
+			<button class="btn btn-link" (click)="deleteSubject(subject._id , i)">Delete</button>
+		</td>
+	</tr>
 </table>
 
 <ng-template #message>
 	<div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>
-			{{ msg }}
+		{{ msg }}
 	</div>
 	<div *ngIf="!msg">
-		<div class="loader"><div class="ball-triangle-path"><div></div><div></div><div></div></div></div>
+		<div class="loader">
+			<div class="ball-triangle-path">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
 	</div>
 </ng-template>

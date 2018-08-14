@@ -11,7 +11,7 @@ import { Student } from './student';
 })
 export class StudentlistComponent implements OnInit {
   @HostBinding('@moveIn')
-  students: Student[];
+  students: any = [{ 'f_name': "saroj", classID: 2 }, { 'f_name': "rikal", classID: 2 }];
   formshow = false;
   msg: string;
   student: Student = <Student>{};
@@ -20,6 +20,7 @@ export class StudentlistComponent implements OnInit {
   editMode;
   success;
   submitted;
+  filterhValue;
 
   constructor(private studentsService: StudentsService) { }
 
