@@ -15,6 +15,7 @@ export class UserService {
 
   signup(user) {
     // return this.http.post('http://192.168.1.180:3000/user', user)
+    user.dob = user.dob.year + "/" + user.dob.month + "/" + user.dob.day;
     return this.http.post('http://192.168.1.229:3000/user', user);
   }
 

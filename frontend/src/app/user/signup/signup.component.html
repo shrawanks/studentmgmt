@@ -69,7 +69,7 @@
   <div class="form-group">
     <label for="email">DOB</label>
     <div class="input-group">
-      <input class="form-control" placeholder="yyyy-mm-dd" (focus)="d.toggle()" name="dp" [(ngModel)]="user.date" ngbDatepicker
+      <input class="form-control" placeholder="yyyy-mm-dd" (focus)="d.toggle()" name="dp" [(ngModel)]="user.dob" ngbDatepicker
         #d="ngbDatepicker" [minDate]="{year: 1960, month: 1, day: 1}">
 
     </div>
@@ -90,3 +90,4 @@
   </button>
 </form>
 <br>
+<pre>{{formData.invalid }} {{ submitted }} {{ !conPassValid }}</pre>

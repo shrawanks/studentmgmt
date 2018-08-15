@@ -1,8 +1,8 @@
-import { Component, OnInit, HostListener } from '@angular/core'
-import { User } from '../user'
-import { UserService } from '../user.service'
-import { Router } from '@angular/router'
-import { moveIn, fallIn } from '../../router.animations'
+import { Component, OnInit, HostListener } from '@angular/core';
+import { User } from '../user';
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { moveIn, fallIn } from '../../router.animations';
 
 @Component({
   selector: 'app-signup',
@@ -10,18 +10,18 @@ import { moveIn, fallIn } from '../../router.animations'
   styleUrls: ['./signup.component.scss'],
   animations: [moveIn(), fallIn()],
 })
+
 export class SignupComponent implements OnInit {
-  error: string
-  successMsg: string
-  user: any = <User>{} || []
-  submitted = false
-  // tslint:disable-next-line:member-ordering
-  model: any
-  conPassValid = false
+  error: string;
+  successMsg: string;
+  user: any = <User>{} || [];
+  submitted = false;
+  model: any;
+  conPassValid = false;
 
   constructor(private userService: UserService, private router: Router) {
     if (this.userService.isLoggedIn()) {
-      this.router.navigate(['/profile'])
+      this.router.navigate(['/profile']);
     }
   }
 
@@ -61,8 +61,6 @@ export class SignupComponent implements OnInit {
         });
     }
   }
-
-
 
 }
 

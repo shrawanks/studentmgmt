@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http'
 })
 export class StudentsService {
 
-  students
+  students;
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class StudentsService {
   }
 
   addStudent(student) {
-    return this.http.post('https://reqres.in/api/users', student)
+    return this.http.post('https://reqres.in/api/users', student);
   }
 
   updateStudent(id, student) {

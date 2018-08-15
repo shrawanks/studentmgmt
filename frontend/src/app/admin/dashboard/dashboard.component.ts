@@ -40,11 +40,6 @@ export class DashboardComponent implements OnInit {
 		}
 	}
 
-
-	red() {
-
-	}
-
 	getStudents() {
 		if (!this.studentService.students) {
 			this.studentService.getStudents()

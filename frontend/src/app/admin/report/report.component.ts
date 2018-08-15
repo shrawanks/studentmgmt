@@ -1,7 +1,10 @@
-import { Component, OnInit, HostBinding } from '@angular/core'
-import { StudentsService } from '../studentlist/students.service'
-import { ReportService } from './report.service'
-import { moveIn, fallIn } from '../../router.animations'
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { StudentsService } from '../studentlist/students.service';
+import { ReportService } from './report.service';
+import { moveIn, fallIn } from '../../router.animations';
+import { Report } from './report';
+import { Student } from '../studentlist/student';
+import { Subject } from '../subjectlist/subject';
 
 @Component({
   selector: 'app-report',
@@ -12,12 +15,10 @@ import { moveIn, fallIn } from '../../router.animations'
 
 export class ReportComponent implements OnInit {
   @HostBinding('@moveIn')
-  students: any = []
-  student: string
-  class: number
-  subjects: any = []
-  submitted = false
-  marksheet = []
+  students: Student[] = [];
+  subjects: Subject[] = [];
+  report: Report = <Report>{};
+  submitted = false;
 
   constructor(private studentService: StudentsService, private reportService: ReportService) { }
 
@@ -27,19 +28,19 @@ export class ReportComponent implements OnInit {
     alert();
     this.reportService.getSubjects(this.class).subscribe(
       response => {
-        console.log(response['data'])
-        this.subjects = response['data']
+        console.log(response['data']);
+        this.subjects = response['data'];
       }
-    )
+    );
   }
 
   getStudents() {
-    this.studentService.getStudentsOfClass(this.class).subscribe(
+    this.studentService.getStudentsOfClass(this.report.class).subscribe(
       data => {
-        console.log(data['data'])
-        this.students = data['data']
+        console.log(data['data']);
+        this.students = data['data'];
       }
-    )
+    );
   }
 
   saveReport() {
@@ -54,14 +55,13 @@ export class ReportComponent implements OnInit {
     const data = { 'studentId': this.student, "class": this.class, "marksheet": this.marksheet }
     this.reportService.addReport(data).subscribe(
       response => {
-        this.student = ""
-        this.class = null
-        this.subjects = []
-        this.submitted = false
+        this.report = <Report>{};
+        this.subjects = [];
+        this.submitted = false;
       }, error => {
-        this.submitted = false
+        this.submitted = false;
       }
-    )
+    );
   }
 
 }
