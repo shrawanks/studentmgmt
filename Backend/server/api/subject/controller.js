@@ -149,9 +149,9 @@ class subjectController {
 		})
 	}
 
-	get(req, res) {
+		getClass(req, res) {
 		let query = {
-			_id: mongoose.Types.ObjectId(req.params.classId)
+			classId: req.params.classId
 		}
 		// let query = {
 		// 	email: req.params.email
@@ -167,25 +167,5 @@ class subjectController {
 			res.status(500).send({status:'failed',data: err})
 		})
 	}
-
-	getClass(req, res) {
-		let query = {
-			_id: mongoose.Types.ObjectId(req.params.classId)
-		}
-		// let query = {
-		// 	email: req.params.email
-		// }
-		let projection = {
-			// f_name: 1
-		}
-		Subject.find(query, projection).lean().then(findRes=> {
-			//res.send(findRes)
-			res.status(200).send({status:'success',data: findRes})
-		}).catch(err => {
-			//res.send(err)
-			res.status(500).send({status:'failed',data: err})
-		})
-	}
-
 }
 module.exports = subjectController

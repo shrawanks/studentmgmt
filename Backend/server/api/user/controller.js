@@ -55,10 +55,8 @@ class userController {
 	 * @return {[type]}     [description]
 	 */
 	create(req, res) {
-		const hash = crypto.createHmac('sha256', secret)
-                   .update(req.body.password)
-				   .digest('hex');
-				   var token = jwt.sign({ email: req.body.email},secret,{ expiresIn: '24h' });		   
+		const hash = crypto.createHmac('sha256', secret).update(req.body.password).digest('hex');
+		const token = jwt.sign({ email: req.body.email},secret,{ expiresIn: '24h' });		   
 		let saveObj = {
 			f_name: req.body.f_name,
 			l_name: req.body.l_name,
@@ -124,10 +122,12 @@ class userController {
 		let updateObj = {
 			f_name: req.body.f_name,
 			l_name: req.body.l_name,
+			dob: req.body.dob,
 			email: req.body.email,
-			phone: req.body.phone,
+			phone:req.body.phone,
 			address:req.body.address,
-			gender:req.body.gender
+			gender:req.body.gender,
+			classID:req.body.classID
 		}
 		let options = {
 			// new: true
@@ -165,5 +165,51 @@ class userController {
 			res.status(200).send({status:'err'})
 		})
 	}
+	
+	login(req, res) {
+		//console.log(req.body.email);
+		const hash = crypto.createHmac('sha256', secret).update(req.body.password).digest('hex');
+		const token = jwt.sign({ email: req.body.email},secret,{ expiresIn: '24h' });
+		console.log(req.body.password);
+		console.log(hash);
+		let query = {
+			email: req.body.email,
+			password:hash
+		}
+		let projection = {
+			// f_name: 1
+		}
+		User.findOne(query, projection).lean().then(findRes=> {
+			//console.log(findRes);
+			if(findRes==null)
+			{
+			res.status(401).send({status:'Ivalid email or password'})
+			}
+			else
+			{
+			res.status(200).send({status:'success',jwttoken:token,data:findRes})
+			}	
+		}).catch(err => {
+			res.status(401).send({status:'failed',data:err})
+			})
+	}	
+
+	getSubjectByClass(req,res){
+		let query = {
+			classID: req.params.classId
+		}
+		{
+		let projection = { 
+			   f_name: true,
+			   l_name:true
+				}
+		User.find(query,projection).lean().then(findRes=>{
+			res.status(200).send({status:'success',data: findRes})
+		}).catch(err=>{
+			res.status(500).send({status:'failed',data: err})
+		})		
+		}
+	}
+
 }
 module.exports = userController
