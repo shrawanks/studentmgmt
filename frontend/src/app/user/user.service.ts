@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class UserService {
   token: string;
   currentUser: {} = null;
+  user = JSON.parse(localStorage.getItem('user'));
 
   constructor(private http: HttpClient) { }
 
@@ -17,17 +18,27 @@ export class UserService {
     return this.http.post('http://192.168.1.229:3000/user', user);
   }
 
-  login(user) {
-    // return this.http.post('http://192.168.1.243:3000/login', user)
-    return this.http.post('https://reqres.in/api/login', user);
+  isAdmin() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      if (user.type === 2) {
+        return true;
+      }
+    }
+    return false;
   }
 
-  getUserDetails() {
+  login(user) {
+    // return this.http.post('http://192.168.1.243:3000/login', user)
+    return this.http.post('http://192.168.1.229:3000/user/login', user);
+  }
+
+  getUserDetails(id) {
     // let headers = new HttpHeaders()
     // const token = this.getToken()
     // headers = headers.append('x-access-token', token)
     // return this.http.get('http://192.168.1.243:3000/me', {headers : headers})
-    return this.http.get('https://reqres.in/api/users/2');
+    return this.http.get('http://192.168.1.229:3000/user/' + id);
   }
 
   getToken() {
@@ -59,6 +70,7 @@ export class UserService {
   logout() {
     this.token = '';
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
 }

@@ -1,20 +1,25 @@
 <div *ngIf="userService.currentUser else message">
   <div class="col-md-3 text-center">
-      <img [src]="userService.currentUser.avatar" class="img-thumbnail" style="border-radius: 100%">
-      <br>
-      <h3>{{userService.currentUser.first_name}}</h3>
-      <input type="file" (change)="fileChanged($event)">
+    <img *ngIf="userService.currentUser.avatar" [src]="userService.currentUser.avatar" class="img-thumbnail" style="border-radius: 100%">
+    <br>
+    <h3>{{userService.currentUser.f_name}}</h3>
+    <input type="file" (change)="fileChanged($event)">
   </div>
-  
+
   <br>
 </div>
 
 <ng-template #message>
-	<div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>
-			{{ msg }}
-	</div>
-	<div *ngIf="!msg">
-		<div class="loader"><div class="ball-triangle-path"><div></div><div></div><div></div></div></div>
-	</div>
+  <div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>
+    {{ msg }}
+  </div>
+  <div *ngIf="!msg">
+    <div class="loader">
+      <div class="ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
 </ng-template>
-

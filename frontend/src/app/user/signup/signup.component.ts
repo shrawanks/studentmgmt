@@ -29,35 +29,36 @@ export class SignupComponent implements OnInit {
 
   confirmPassword(conpass) {
     if (conpass.value !== this.user.password) {
-      this.conPassValid = false
+      this.conPassValid = false;
     } else {
-      this.conPassValid = true
+      this.conPassValid = true;
     }
   }
 
   signup(formData) {
     if (formData.valid && this.conPassValid) {
-      this.submitted = true
-      this.user.role = 2
-      this.user.dob = this.user.date.year + "/" + this.user.date.month + "/" + this.user.date.day
+      this.submitted = true;
+      this.user.role = 2;
+      this.user.dob = this.user.date.year + "/" + this.user.date.month + "/" + this.user.date.day;
 
       this.userService.signup(this.user)
         .subscribe(response => {
-          console.log(response)
+          console.log(response);
           if (response['jwttoken']) {
-            this.successMsg = 'Great! You have been registered.'
-            localStorage.setItem('token', response['jwttoken'])
-            this.userService.token = response['jwttoken']
-            this.userService.currentUser = response['user']
-            this.router.navigate(['/profile'])
-            this.user = {}
+            this.successMsg = 'Great! You have been registered.';
+            localStorage.setItem('token', response['jwttoken']);
+            this.userService.token = response['jwttoken'];
+            localStorage.setItem('user', JSON.stringify(response['data']));
+            this.userService.currentUser = response['data'];
+            this.router.navigate(['/profile']);
+            this.user = {};
           }
-          this.submitted = false
+          this.submitted = false;
         }, error => {
-          console.log(error)
-          this.error = error['error']['error']
-          this.submitted = false
-        })
+          console.log(error);
+          this.error = error['error']['error'];
+          this.submitted = false;
+        });
     }
   }
 

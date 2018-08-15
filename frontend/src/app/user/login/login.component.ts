@@ -29,15 +29,16 @@ export class LoginComponent implements OnInit {
       this.error = '';
       this.userSerive.login(this.user).subscribe(response => {
         console.log(response);
-        if (response['token']) {
-          localStorage.setItem('token', response['token']);
-          this.userSerive.token = response['token'];
-          this.userSerive.currentUser = response['user'];
+        if (response['jwttoken']) {
+          localStorage.setItem('token', response['jwttoken']);
+          localStorage.setItem('user', JSON.stringify(response['data']));
+          this.userSerive.token = response['jwttoken'];
+          this.userSerive.currentUser = response['data'];
           this.router.navigate(['/profile']);
         }
       }, error => {
         console.log(error);
-        this.error = error['error']['error'];
+        this.error = error['error']['status'];
         this.user.password = '';
         this.submitted = false;
       });
