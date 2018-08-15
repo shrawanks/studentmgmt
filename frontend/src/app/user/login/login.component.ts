@@ -38,7 +38,11 @@ export class LoginComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-        this.error = error['error']['status'];
+        if (error['error']['status']) {
+          this.error = error['error']['status'];
+        } else {
+          this.error = "Can't connect you right now.";
+        }
         this.user.password = '';
         this.submitted = false;
       });

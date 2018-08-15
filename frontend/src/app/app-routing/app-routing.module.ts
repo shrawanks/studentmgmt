@@ -14,6 +14,7 @@ const appRoute: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'user/:id', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'signup', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService, AdminGuardService] },
   { path: 'dashboard/subjects', component: SubjectlistComponent, canActivate: [AuthGuardService] },

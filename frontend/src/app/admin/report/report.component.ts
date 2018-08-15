@@ -25,8 +25,7 @@ export class ReportComponent implements OnInit {
   ngOnInit() { }
 
   getSubjects() {
-    alert();
-    this.reportService.getSubjects(this.class).subscribe(
+    this.reportService.getSubjects(this.report.class).subscribe(
       response => {
         console.log(response['data']);
         this.subjects = response['data'];
@@ -44,16 +43,15 @@ export class ReportComponent implements OnInit {
   }
 
   saveReport() {
-    this.submitted = true
+    this.submitted = true;
+    this.report.marks = [];
     this.students.forEach(function (i) {
-      this.marksheet.push({
+      this.report.marks.push({
         "subjectID": i._id,
-        "obtainedMarks": i.om
-      })
-    })
-
-    const data = { 'studentId': this.student, "class": this.class, "marksheet": this.marksheet }
-    this.reportService.addReport(data).subscribe(
+        "obtainedMarks": i['om']
+      });
+    });
+    this.reportService.addReport(this.report).subscribe(
       response => {
         this.report = <Report>{};
         this.subjects = [];
