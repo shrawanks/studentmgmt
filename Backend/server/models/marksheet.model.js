@@ -4,7 +4,7 @@ const schema = mongoose.Schema
 
 const marksheetSchema = new schema({
 	student_id:{
-		type: Number,
+		type: String,
 		required: true
 	} ,
 	subject:[{name:String,obtainmark:String}]	
