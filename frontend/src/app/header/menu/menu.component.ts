@@ -11,14 +11,15 @@ import { UserService } from '../../user/user.service'
 
 export class MenuComponent implements OnInit {
 
-  constructor(private userService : UserService, private router:Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  logout(){
-  	this.userService.logout();
-  	this.router.navigate(['/'])
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['/'])
+    console.log(this.userService.currentUser);
   }
 
 }

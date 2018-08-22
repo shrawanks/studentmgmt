@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "extractCss": true,
             "outputPath": "dist/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -35,7 +36,6 @@
               "./node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
-
           "configurations": {
             "production": {
               "fileReplacements": [
@@ -47,18 +47,14 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-
               "extractCss": true,
-
             }
           },
-
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",

@@ -25,7 +25,7 @@ export class StudentsService {
   }
 
   updateStudent(id, student) {
-    return this.http.put("/" + + id, student)
+    return this.http.put("http://192.168.1.229:3000/user/" + id, student)
   }
 
   deleteStudent(id) {

@@ -19,12 +19,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let student of students; let i=index" [@fallIn]='state'>
-                <th scope="row">{{i + 1}}</th>
-                <td>{{student.f_name}} {{ student.l_name}}</td>
-                <td>{{student.classID}} </td>
-                <td>{{student.address}}</td>
-              </tr>
+              <ng-container *ngFor="let student of students; let i=index" [@fallIn]='state'>
+                <tr *ngIf="i < 3">
+                  <th scope="row">{{i + 1}}</th>
+                  <td>{{student.f_name}} {{ student.l_name}}</td>
+                  <td>{{student.classID}} </td>
+                  <td>{{student.address}}</td>
+                </tr>
+              </ng-container>
             </tbody>
           </table>
         </ng-container>

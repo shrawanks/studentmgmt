@@ -11,7 +11,7 @@ import { Student } from './student';
 })
 export class StudentlistComponent implements OnInit {
   @HostBinding('@moveIn')
-  students: any = [{ 'f_name': "saroj", classID: 2 }, { 'f_name': "rikal", classID: 2 }];
+  students: any = [];
   formshow = false;
   msg: string;
   student: Student = <Student>{};
@@ -33,6 +33,7 @@ export class StudentlistComponent implements OnInit {
       this.studentsService.getStudents().subscribe(
         response => {
           this.students = response['data'];
+          console.log(this.students);
         },
         error => {
           this.msg = "Can't get the data right now.";
@@ -47,7 +48,12 @@ export class StudentlistComponent implements OnInit {
     this.formshow = true;
   }
 
-  addStudent(close) {
+  check(event) {
+    console.log(event);
+  }
+
+  addStudent(close, event) {
+    console.log(event)
     close.click();
     // this.StudentsService.addStudent(this.user)
     // .subscribe(response => {
@@ -92,14 +98,17 @@ export class StudentlistComponent implements OnInit {
     this.editFid = fid;
   }
 
-  updateStudent() {
+  updateStudent(close) {
+    close.click();
     this.studentsService.updateStudent(this.editId, this.student)
       .subscribe(response => {
+        console.log(response);
         this.studentsService[this.editFid] = this.student;
         this.success = response['message'];
         this.editMode = false;
         this.submitted = false;
       }, error => {
+        console.log(error);
         this.submitted = false;
         this.editMode = false;
       });
