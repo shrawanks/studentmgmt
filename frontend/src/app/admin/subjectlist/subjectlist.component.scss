@@ -15,8 +15,10 @@ button{
 	position: fixed;
     left: 50%;
     top: 50%;
-    transform: translate(-50%);
-	padding: 20px 100px;
-	background: #fff;
+    margin-left: -115px;
+    padding: 20px 100px;
+    background: #fff;
     border: 1px solid #ee6363;
+    height: 150px;
+    width: 330px;
 }

@@ -25,7 +25,7 @@
     <td>{{student.gender}}</td>
     <td>
       <button class="btn btn-link" (click)="editStudent(student._id, i, formtoggle)" data-toggle="modal" data-target="#addStudentForm">Edit</button>
-      <button class="btn btn-link" (click)="deleteStudent(student._id , i)">Delete</button>
+      <button class="btn btn-link" (click)="getDelete(student._id , i)">Delete</button>
     </td>
   </tr>
 </table>
@@ -122,4 +122,13 @@
       </div>
     </form>
   </div>
+</div>
+
+<div class="con-del" *ngIf="deleteMode" [@fallIn]='state'>
+  Are you sure you?
+  <br>
+  <br>
+  <br>
+  <button type="button" class="btn btn-outline btn-danger" (click)="deleteStudent(1)" style="margin-right:10px">Yes</button>
+  <button type="button" class="btn btn-outline" (click)="deleteStudent(0)">No</button>
 </div>

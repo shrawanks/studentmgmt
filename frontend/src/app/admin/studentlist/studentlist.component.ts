@@ -21,6 +21,9 @@ export class StudentlistComponent implements OnInit {
   success;
   submitted;
   filterhValue;
+  deleteMode: boolean;
+  delId: any;
+  delFid: any;
 
   constructor(private studentsService: StudentsService) { }
 
@@ -78,16 +81,21 @@ export class StudentlistComponent implements OnInit {
     // }
   }
 
-  deleteStudent(id, fid) {
-    this.studentsService.deleteStudent(id)
-      .subscribe(response => {
-        console.log(response);
-        this.students.splice(fid, 1);
-        this.success = response['message'];
-      }, error => {
-        console.log(error);
-      });
-
+  deleteStudent(decision) {
+    if (decision === 1) {
+      this.studentsService.deleteStudent(this.delId)
+        .subscribe(response => {
+          console.log(response);
+          this.students.splice(this.delFid, 1);
+          this.success = response['message'];
+          this.deleteMode = false;
+        }, error => {
+          this.deleteMode = false;
+          console.log(error);
+        });
+    } else {
+      this.deleteMode = false;
+    }
   }
 
   editStudent(id, fid) {
@@ -112,6 +120,12 @@ export class StudentlistComponent implements OnInit {
         this.submitted = false;
         this.editMode = false;
       });
+  }
+
+  getDelete(id, fid) {
+    this.deleteMode = true;
+    this.delId = id;
+    this.delFid = fid;
   }
 
 }
