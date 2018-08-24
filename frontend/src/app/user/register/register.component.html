@@ -1,0 +1,70 @@
+<header class="page-header">
+  <h1 class="page-title">Sign Up</h1>
+</header>
+
+<div class="alert alert-success" *ngIf="successMsg">
+  {{successMsg}}
+</div>
+<form action="" (ngSubmit)="register(data)">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">First name</label>
+        <input type="text" name="firstname" (click)="test(firstname)" class="form-control" [(ngModel)]="user.f_name" #firstname= "ngModel"  >
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="">Last name</label>
+        <input type="text" name="lastname" class="form-control" [(ngModel)]="user.l_name">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="">email</label>
+    <input type="email" name="email" class="form-control" [(ngModel)]="user.email">
+  </div>
+
+  <div class="form-group">
+    <label for="">Password</label>
+    <input type="password" name="email" class="form-control" [(ngModel)]="user.password">
+  </div>
+
+  <div class="form-group">
+    <label for="">Retype Password</label>
+    <input type="password" name="email" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="">DOB</label>
+    <input type="date" name="date" class="form-control" [(ngModel)]="user.dob">
+  </div>
+
+  <div class="form-group">
+    <label for="">Address</label>
+    <input type="text" name="address" class="form-control" [(ngModel)]="user.address">
+  </div>
+
+  <div class="form-group">
+    <label for="">Class</label>
+    <select name="class" id="" class="form-control" [(ngModel)]="user.classID">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+  </div>
+
+  <button class="btn btn-primary" type="submit">Create Account</button>
+
+</form>

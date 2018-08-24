@@ -8,29 +8,32 @@
 @import "~loaders.css/src/loaders";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "global";
-
-
-body{
-	overflow-x: hidden;
+body {
+  overflow-x: hidden;
 }
 
 .loader {
-	box-sizing: border-box;
-	display: -ms-flexbox;
-	display: flex;
-	-ms-flex: 0 1 auto;
-	flex: 0 1 auto;
-	-ms-flex-direction: column;
-	flex-direction: column;
-	-ms-flex-positive: 1;
-	flex-grow: 1;
-	-ms-flex-negative: 0;
-	flex-shrink: 0;
-	-ms-flex-preferred-size: 25%;
-	flex-basis: 25%;
-	height: 200px;
-	-ms-flex-align: center;
-	align-items: center;
-	-ms-flex-pack: center;
-	justify-content: center;
+  box-sizing: border-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -ms-flex-preferred-size: 25%;
+  flex-basis: 25%;
+  height: 200px;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.navbar {
+  background-color: #37474F !important;
+  padding: 10px 0 !important;
 }

@@ -1,8 +1,8 @@
 export class Subject {
-name: string
-classId: string
-fullMark: string
-passMark: string
-id: string
+    subjectName: string
+    class: number
+    FullMark: number
+    PassMark: number
+    _id: string
 
 }

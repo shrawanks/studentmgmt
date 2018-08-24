@@ -5,56 +5,62 @@
 <button class="btn btn-primary" (click)="showSubjectForm();">Add Subject</button>
 <br>
 <br>
-<form *ngIf="showSubject" #form="ngForm" (ngSubmit)="editMode ? updateSubject(form) : submitSubject(form)"  >
-	<div class="form-group">
-		<label>Subject Name</label>
-		<input type="text" name="subjectname" [(ngModel)]="subject.name" #subjectName="ngModel" class="form-control" required>
-		<div *ngIf="subjectName.invalid && subjectName.touched" class="text-danger">Name is required</div>
-	</div>
-	<div class="form-group">
-		<label>Class</label>
-		<input type="text" name="class"  [(ngModel)]="subject.classId" class="form-control" required>
-	</div>
-	<div class="form-group">
-		<label>Full Marks</label>
-		<input type="text" name="fullmarks"  [(ngModel)]="subject.fullMark" class="form-control" required>
-	</div>
-	<div class="form-group">
-		<label>Pass Marks</label>
-		<input type="text" name="passmarks"  [(ngModel)]="subject.passMark" class="form-control" required>
-	</div>
-	<button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button> &nbsp;
-	<button type="button" class="btn btn-outline" (click)="closeForm()">Close</button>
+<form *ngIf="showSubject" #form="ngForm" (ngSubmit)="editMode ? updateSubject(form) : submitSubject(form)">
+  <div class="form-group">
+    <label>Subject Name</label>
+    <input type="text" name="subjectname" [(ngModel)]="subject.subjectName" #subjectName="ngModel" class="form-control" required>
+    <div *ngIf="subjectName.invalid && subjectName.touched" class="text-danger">Name is required</div>
+  </div>
+  <div class="form-group">
+    <label>Class</label>
+    <input type="text" name="class" [(ngModel)]="subject.class" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Full Marks</label>
+    <input type="text" name="fullmarks" [(ngModel)]="subject.FullMark" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label>Pass Marks</label>
+    <input type="text" name="passmarks" [(ngModel)]="subject.PassMark" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Submit</button> &nbsp;
+  <button type="button" class="btn btn-outline" (click)="closeForm()">Close</button>
 </form>
 
 <br>
 <table class="table" *ngIf="subjectList else message">
-	<tr >
+  <tr>
     <td>SN</td>
     <td>Subject</td>
     <td>Class</td>
     <td>Full Mark</td>
     <td>Pass Mark</td>
     <td>Action</td>
-   </tr>
-   <tr *ngFor="let subject of subjectList; let i=index">
-   	<td>{{i+1}}</td>
-   	<td>{{subject.name}}</td>
-   	<td>{{subject.class}}</td>
-   	<td>{{subject.fullMark}}</td>
-   	<td>{{subject.passMark}}</td>
-   	<td>
-   		<button class="btn btn-link" (click)="editSubject(subject._id, i)">Edit</button>
-   		<button class="btn btn-link" (click)="deleteSubject(subject._id , i)">Delete</button>
-   	</td>
-   </tr>
+  </tr>
+  <tr *ngFor="let subject of subjectList; let i=index">
+    <td>{{i+1}}</td>
+    <td>{{subject.subjectName}}</td>
+    <td>{{subject.class}}</td>
+    <td>{{subject.FullMark}}</td>
+    <td>{{subject.PassMark}}</td>
+    <td>
+      <button class="btn btn-link" (click)="editSubject(subject._id, i)">Edit</button>
+      <button class="btn btn-link" (click)="deleteSubject(subject._id , i)">Delete</button>
+    </td>
+  </tr>
 </table>
 
 <ng-template #message>
-	<div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>
-			{{ msg }}
-	</div>
-	<div *ngIf="!msg">
-		<div class="loader"><div class="ball-triangle-path"><div></div><div></div><div></div></div></div>
-	</div>
+  <div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>
+    {{ msg }}
+  </div>
+  <div *ngIf="!msg">
+    <div class="loader">
+      <div class="ball-triangle-path">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </div>
 </ng-template>

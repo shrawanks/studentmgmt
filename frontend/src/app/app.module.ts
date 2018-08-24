@@ -27,7 +27,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { StudentlistComponent } from './admin/studentlist/studentlist.component';
 import { SubjectlistComponent } from './admin/subjectlist/subjectlist.component';
 import { MarksheetComponent } from './admin/marksheet/marksheet.component'
-import { ReportComponent } from './admin/report/report.component'
+import { ReportComponent } from './admin/report/report.component';
+import { RegisterComponent } from './user/register/register.component'
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { ReportComponent } from './admin/report/report.component'
     SubjectlistComponent,
     MarksheetComponent,
     ReportComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,3 +1,66 @@
 <p>
   marksheet works!
 </p>
+
+<header class="page-header">
+  <h1 class="page-title">Marksheet</h1>
+</header>
+
+<form action="">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="">Class</label>
+        <select name="class" id="" class="form-control" (change)="selectchange($event)" [(ngModel)]="class">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-4" *ngIf="results.length > 0">
+      <div class="form-group">
+        <label for="">Students</label>
+        <select name="students" id="" class="form-control" (change)="displayResult($event)" [(ngModel)]="studentID">
+          <option value="" selected>Choose Student</option>
+          <option *ngFor="let result of results" value="{{result.id}}">{{result.firstName}}</option>
+
+
+        </select>
+      </div>
+    </div>
+
+
+  </div>
+</form>
+
+
+<table class="table table-bordered">
+  <tr>
+    <th>SN</th>
+    <th>Subject</th>
+    <th>Full Marks</th>
+    <th>Pass Marks</th>
+    <th>Obtained Marks</th>
+    <th>Remarks</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Science</td>
+    <td>100</td>
+    <td>32</td>
+    <td>
+      <input type="text" class="form-control">
+    </td>
+    <td>Passed</td>
+  </tr>
+</table>

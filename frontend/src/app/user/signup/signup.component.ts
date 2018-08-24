@@ -18,9 +18,9 @@ export class SignupComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   model: any
   conPassValid = false
- 
 
-  constructor(private userSerive: UserService, private router: Router) { 
+
+  constructor(private userSerive: UserService, private router: Router) {
     if (this.userSerive.isLoggedIn()) {
       this.router.navigate(['/profile'])
     }
@@ -40,6 +40,8 @@ export class SignupComponent implements OnInit {
     if (formData.valid && this.conPassValid) {
       this.submitted = true
       this.user.role = 2
+      // this.user.dob = new Date(this.user.dob.year, this.user.dob.month, this.user.dob.day, 0, 0, 0, 0);
+      console.log(this.user);
       this.userSerive.signup(this.user)
         .subscribe(data => {
           if (data['token']) {
@@ -51,6 +53,8 @@ export class SignupComponent implements OnInit {
             this.user = {}
             this.submitted = false
           }
+          console.log(data);
+
         }, error => {
           console.log(error)
           this.error = error['error']['error']
@@ -59,7 +63,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
- 
+
 
 }
- 
+
