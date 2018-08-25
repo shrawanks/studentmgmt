@@ -1,8 +1,11 @@
 <div class="alert alert-success" role="alert" *ngIf="success">
 	{{success}}
 </div>
+<div class="page-header d-flex justify-content-between">
+	<h1 class="page-title">Students</h1>
+	<button class="btn btn-primary" (click)="showSubjectForm();">Add Subject</button>
+</div>
 
-<button class="btn btn-primary" (click)="showSubjectForm();">Add Subject</button>
 <br>
 <br>
 <form *ngIf="showSubject" #form="ngForm" (ngSubmit)="editMode ? updateSubject(form) : submitSubject(form)">
@@ -50,7 +53,7 @@
 
 
 <br>
-<table class="table" *ngIf="subjectList.length > 0 else message">
+<table class="table text-center" *ngIf="subjectList.length > 0 else message">
 	<input type="text" class="form-control" placeholder="Search by name.." name="filterValue" [(ngModel)]="filterValue">
 	<br>
 	<tr>
@@ -69,10 +72,20 @@
 		<td>{{subject.passmark}}</td>
 		<td>
 			<button class="btn btn-link" (click)="editSubject(subject._id, i)">Edit</button>
-			<button class="btn btn-link" (click)="deleteSubject(subject._id , i)">Delete</button>
+			<button class="btn btn-link" (click)="getDelete(subject._id , i)">Delete</button>
 		</td>
 	</tr>
 </table>
+
+
+<div class="con-del" *ngIf="deleteMode" [@fallIn]='state'>
+	Are you sure you?
+	<br>
+	<br>
+	<br>
+	<button type="button" class="btn btn-outline btn-danger" (click)="deleteSubject(1)" style="margin-right:10px">Yes</button>
+	<button type="button" class="btn btn-outline" (click)="deleteSubject(0)">No</button>
+</div>
 
 <ng-template #message>
 	<div *ngIf="msg" class="alert-warning text-center" [@fallIn]='state'>

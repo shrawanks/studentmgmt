@@ -5,12 +5,12 @@
         style="border-radius:100%;" height="60" width="60">
       <div class="card-body">
         <h5>{{userService.currentUser?.f_name}} {{userService.currentUser?.l_name}}</h5>
-        <p class="card-text">Class: {{userService.currentUser?.classId}}</p>
+        <p class="card-text">Class: {{userService.currentUser?.classID}}</p>
         <p class="card-text">Gender: {{userService.currentUser?.gender}}</p>
         <p class="card-text">Address: {{userService.currentUser?.address}}</p>
       </div>
     </div>
-    <input type="file" (change)="fileChanged($event)">
+    <input *ngIf="this.userService.user['_id'] === this.userService.currentUser['_id']" type="file" (change)="fileChanged($event)">
   </div>
 
   <br>

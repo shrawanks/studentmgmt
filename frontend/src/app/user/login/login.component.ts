@@ -32,9 +32,13 @@ export class LoginComponent implements OnInit {
         if (response['jwttoken']) {
           localStorage.setItem('token', response['jwttoken']);
           localStorage.setItem('user', JSON.stringify(response['data']));
+          this.userSerive.user = response['data'];
           this.userSerive.token = response['jwttoken'];
           this.userSerive.currentUser = response['data'];
-          this.router.navigate(['/profile']);
+          if (this.userSerive.user['type'] === 2)
+            this.router.navigate(['/dashboard']);
+          else
+            this.router.navigate(['/profile']);
         }
       }, error => {
         console.log(error);

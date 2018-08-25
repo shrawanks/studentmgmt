@@ -19,12 +19,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let student of students; let i=index" [@fallIn]='state'>
-                <th scope="row">{{i + 1}}</th>
-                <td>{{student.f_name}} {{ student.l_name}}</td>
-                <td>{{student.classID}} </td>
-                <td>{{student.address}}</td>
-              </tr>
+              <ng-container *ngFor="let student of students; let i=index" [@fallIn]='state'>
+                <tr *ngIf="i < 3">
+                  <th scope="row">{{i + 1}}</th>
+                  <td>{{student.f_name}} {{ student.l_name}}</td>
+                  <td>{{student.classID}} </td>
+                  <td>{{student.address}}</td>
+                </tr>
+              </ng-container>
             </tbody>
           </table>
         </ng-container>
@@ -91,6 +93,18 @@
           </ng-template>
         </ng-template>
         <a class="btn btn-primary float-left" routerLink="subjects">Manage Subjects</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card text-center">
+      <div class="card-title text-center">Report</div>
+      <div class="card-body">
+        <ng-container *ngIf="subjectList; else loader1">
+          <div>No API provided yet</div>
+          <a class="btn btn-primary float-left" routerLink="report">Manage Report</a>
+        </ng-container>
       </div>
     </div>
   </div>

@@ -70,6 +70,8 @@ export class UserService {
 
   logout() {
     this.token = '';
+    this.currentUser = null;
+    this.user = null;
     localStorage.removeItem('token');
     localStorage.removeItem('user');
   }

@@ -19,6 +19,7 @@ export class ReportComponent implements OnInit {
   subjects: Subject[] = [];
   report: Report = <Report>{};
   submitted = false;
+  studentMsg: any;
 
   constructor(private studentService: StudentsService, private reportService: ReportService) { }
 
@@ -34,9 +35,12 @@ export class ReportComponent implements OnInit {
   }
 
   getStudents() {
+    this.studentMsg = "";
     this.studentService.getStudentsOfClass(this.report.class).subscribe(
       data => {
         console.log(data['data']);
+        if (data['data'].length === 0)
+          this.studentMsg = "No students found in this class";
         this.students = data['data'];
       }
     );

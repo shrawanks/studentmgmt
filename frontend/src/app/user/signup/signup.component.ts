@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
     if (formData.valid && this.conPassValid) {
       this.submitted = true;
       this.user.role = 2;
-      this.user.dob = this.user.date.year + "/" + this.user.date.month + "/" + this.user.date.day;
+      this.user.dob = this.user.dob.year + "/" + this.user.dob.month + "/" + this.user.dob.day;
 
       this.userService.signup(this.user)
         .subscribe(response => {
@@ -50,6 +50,7 @@ export class SignupComponent implements OnInit {
             this.userService.token = response['jwttoken'];
             localStorage.setItem('user', JSON.stringify(response['data']));
             this.userService.currentUser = response['data'];
+            this.userService.user = response['data'];
             this.router.navigate(['/profile']);
             this.user = {};
           }

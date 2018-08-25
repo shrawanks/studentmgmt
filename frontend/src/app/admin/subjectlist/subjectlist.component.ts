@@ -13,12 +13,15 @@ import { moveIn, fallIn } from '../../router.animations';
 
 export class SubjectlistComponent implements OnInit {
 	@HostBinding('@moveIn')
-	subjectList: any = [];
+	subjectList: any = [{ "name": "science" }];
 	showSubject: boolean;
 	subject: Subject = <Subject>{};
 	editMode = false;
 	editId;
 	editFid;
+	deleteMode = false;
+	delId: any;
+	delFid: any;
 	success: any;
 	msg: string;
 	submitted = false;
@@ -76,15 +79,21 @@ export class SubjectlistComponent implements OnInit {
 		}
 	}
 
-	deleteSubject(id, fid) {
-		this.subjectService.deleteSubject(id)
-			.subscribe(response => {
-				console.log(response);
-				this.subjectList.splice(fid, 1);
-				this.success = response['message'];
-			}, error => {
-				console.log(error);
-			});
+	deleteSubject(decision) {
+		if (decision === 1) {
+			this.subjectService.deleteSubject(this.delId)
+				.subscribe(response => {
+					console.log(response);
+					this.subjectList.splice(this.delFid, 1);
+					this.success = response['message'];
+					this.deleteMode = false;
+				}, error => {
+					console.log(error);
+					this.deleteMode = false;
+				});
+		} else {
+			this.deleteMode = false;
+		}
 
 	}
 
@@ -108,6 +117,12 @@ export class SubjectlistComponent implements OnInit {
 				this.submitted = false;
 				this.editMode = false;
 			});
+	}
+
+	getDelete(id, fid) {
+		this.deleteMode = true;
+		this.delId = id;
+		this.delFid = fid;
 	}
 
 }
