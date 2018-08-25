@@ -9,9 +9,11 @@ import { StudentlistComponent } from '../admin/studentlist/studentlist.component
 import { ReportComponent } from '../admin/report/report.component';
 import { AuthGuardService } from '../auth-guard.service';
 import { AdminGuardService } from '../admin-guard.service';
+import { ListpropertyComponent } from '../listproperty/listproperty.component';
 
 const appRoute: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'list-property', component: ListpropertyComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
   { path: 'user/:id', component: ProfileComponent, canActivate: [AuthGuardService] },

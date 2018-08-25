@@ -1,0 +1,4 @@
+<app-propertytype *ngIf="step == 0" (typeSelected)="popType($event)"></app-propertytype>
+<app-hoteltype *ngIf="step == 1"></app-hoteltype>
+<button *ngIf="step != 0" (click)="previousStep()">Back</button>
+<button *ngIf="step != 0" (click)="nextStep()">Next</button>

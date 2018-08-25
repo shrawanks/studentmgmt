@@ -1,23 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser'
-import { NgModule } from '@angular/core'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { NgbModule} from '@ng-bootstrap/ng-bootstrap'
-import { AppComponent } from './app.component'
-import { MatButtonModule, MatCheckboxModule } from '@angular/material'
-import { MatDatepickerModule } from '@angular/material/datepicker'
-import { MatFormFieldModule } from '@angular/material/form-field'
-import { MatChipsModule } from '@angular/material/chips'
-import { MatIconModule } from '@angular/material/icon'
-import { HeaderComponent } from './header/header.component'
-import { UserComponent } from './user/user.component'
-import { LoginComponent } from './user/login/login.component'
-import { SignupComponent } from './user/signup/signup.component'
-import { MenuComponent } from './header/menu/menu.component'
-import { HomeComponent } from './home/home.component'
-import { FooterComponent } from './footer/footer.component'
-import { UserService } from './user/user.service'
-import { FormsModule } from '@angular/forms'
-import { appRoutes } from './app-routing/app-routing.module'
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppComponent } from './app.component';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { HeaderComponent } from './header/header.component';
+import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { MenuComponent } from './header/menu/menu.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
+import { UserService } from './user/user.service';
+import { FormsModule } from '@angular/forms';
+import { appRoutes } from './app-routing/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,9 +26,12 @@ import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { StudentlistComponent } from './admin/studentlist/studentlist.component';
 import { SubjectlistComponent } from './admin/subjectlist/subjectlist.component';
-import { MarksheetComponent } from './admin/marksheet/marksheet.component'
+import { MarksheetComponent } from './admin/marksheet/marksheet.component';
 import { ReportComponent } from './admin/report/report.component';
-import { FilterPipe } from './filter.pipe'
+import { FilterPipe } from './filter.pipe';
+import { ListpropertyComponent } from './listproperty/listproperty.component';
+import { PropertytypeComponent } from './listproperty/propertytype/propertytype.component';
+import { HoteltypeComponent } from './listproperty/hoteltype/hoteltype.component';
 
 
 @NgModule({
@@ -50,6 +53,9 @@ import { FilterPipe } from './filter.pipe'
     MarksheetComponent,
     ReportComponent,
     FilterPipe,
+    ListpropertyComponent,
+    PropertytypeComponent,
+    HoteltypeComponent,
   ],
   imports: [
     BrowserAnimationsModule,
