@@ -1,16 +1,16 @@
- 
-      <div class="row">
+<div class="row">
   <div class="col-md-6 offset-md-3">
-      <header class="page-header">
-        <h1 class="page-title">Log in</h1>
-      </header>
+    <header class="page-header">
+      <h1 class="page-title">Log in</h1>
+    </header>
     <div *ngIf="error !== ''" class="alert alert-danger" role="alert" [@fallIn]='state'>
       {{error}}
     </div>
     <form #formData='ngForm' (ngSubmit)="!submitted && login(formData)">
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" [(ngModel)]="user.email" name="email" class="form-control" #email="ngModel" placeholder="Enter email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+        <input type="email" [(ngModel)]="user.email" name="email" class="form-control" #email="ngModel" placeholder="Enter email"
+          required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
         <div *ngIf="email.invalid && (email.touched)" class="text-danger" [@fallIn]='state'>
           <small *ngIf="email.errors.required">
             Email is required.
@@ -23,7 +23,8 @@
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input name="password" type="password" [(ngModel)]="user.password" class="form-control" id="password" #password="ngModel" placeholder="Password" required minlength="5">
+        <input name="password" type="password" [(ngModel)]="user.password" class="form-control" id="password" #password="ngModel"
+          placeholder="Password" required minlength="5">
         <div *ngIf="password.invalid && (password.touched)" class="text-danger" [@fallIn]='state'>
           <small *ngIf="password.errors.required">
             Password is required.
@@ -35,9 +36,13 @@
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="formData.invalid || submitted">
         <ng-container *ngIf="!submitted">
-            Login
+          Login
         </ng-container>
-        <div class="ball-pulse" *ngIf="submitted"><div></div><div></div><div></div></div>
+        <div class="ball-pulse" *ngIf="submitted">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </button>
     </form>
   </div>

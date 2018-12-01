@@ -1,4 +1,4 @@
-<div *ngIf="userService.currentUser else message">
+<!-- <div *ngIf="userService.currentUser else message">
   <div class="col-md-3 text-center">
     <div class="card" style="width: 18rem;">
       <img [src]="userService.currentUser?.avatar ? userService.currentUser.avatar : 'assets/default.jpg' " class="img-thumbnail"
@@ -29,4 +29,5 @@
       </div>
     </div>
   </div>
-</ng-template>
+</ng-template> -->
+<input type="file" (change)="fileChanged($event)">

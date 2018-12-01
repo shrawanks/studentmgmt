@@ -56,29 +56,15 @@ export class StudentlistComponent implements OnInit {
   }
 
   addStudent(close, event) {
-    console.log(event)
     close.click();
-    // this.StudentsService.addStudent(this.user)
-    // .subscribe(response => {
-    //   this.students.push(this.user)
-    // }, error =>{
-    //   this.error = "Sorry could not add a student right now."
-    // })
+    this.students.slice(0, 0, this.student);
+    this.studentsService.addStudent(this.student)
+      .subscribe(response => {
 
-
-    // if (formData.valid){
-    // this.student = {
-    //     "name": "morpheus",
-    //     "job": "leader
-    // }
-    // this.students.push(this.user);
-    // this.StudentsService.addStudent(this.student).subscribe(response => {
-    //   this.students.push(this.student)
-    // }, error =>{
-    //   this.error = "Sorry could not add a student right now."
-    // })
-
-    // }
+      }, error => {
+        this.students.slice(0, 1);
+        this.msg = "Sorry could not add a student right now.";
+      });
   }
 
   deleteStudent(decision) {

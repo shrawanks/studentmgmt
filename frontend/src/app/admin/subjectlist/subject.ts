@@ -4,6 +4,5 @@ export class Subject {
   fullMark: string;
   passMark: string;
   _id: string;
-  obtainedMarks;
-
+  obtainedMarks: number;
 }
